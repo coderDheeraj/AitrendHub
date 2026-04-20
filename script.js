@@ -27,11 +27,10 @@ class TrendAI {
         this.setupNewsletter();
         this.initLightbox();
 
-        const basePath = window.location.pathname.includes('/AitrendHub') ? '/AitrendHub/' : './';
         try {
             const [postsRes, pagesRes] = await Promise.all([
-                fetch(`${basePath}posts.json?v=` + Date.now()),
-                fetch(`${basePath}pages.json?v=` + Date.now())
+                fetch('posts.json?v=' + Date.now()),
+                fetch('pages.json?v=' + Date.now())
             ]);
 
             if (postsRes.ok) {
