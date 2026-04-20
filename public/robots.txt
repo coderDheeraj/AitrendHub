@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://trend-ai.dev/sitemap.xml

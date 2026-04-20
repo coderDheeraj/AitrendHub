@@ -1,0 +1,11 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="600" fill="#0F172A"/>
+<path d="M400 150L250 400H550L400 150Z" fill="url(#paint0_linear)"/>
+<defs>
+<linearGradient id="paint0_linear" x1="400" y1="150" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+<stop stop-color="#10B981"/>
+<stop offset="1" stop-color="#059669"/>
+</linearGradient>
+</defs>
+<text x="400" y="450" text-anchor="middle" fill="white" font-family="Arial" font-size="24" font-weight="bold">ETHICAL AI</text>
+</svg>

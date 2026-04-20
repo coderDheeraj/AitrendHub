@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trend-AI | Intelligence Optimized</title>
+    <meta name="description" content="Trend-AI delivers the latest breakthroughs in Artificial Intelligence, Robotics, and Future Tech.">
+    <meta name="author" content="Trend-AI Editorial">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#030712">
+    <meta property="og:title" content="Trend-AI | Intelligence Optimized">
+    <meta property="og:description" content="Trend-AI delivers the latest breakthroughs in Artificial Intelligence, Robotics, and Future Tech.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trend-ai.dev/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://trend-ai.dev/">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='42' height='42' viewBox='0 0 42 42' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='neuralGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23818cf8' /%3E%3Cstop offset='100%25' stop-color='%23c084fc' /%3E%3C/linearGradient%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='1.5' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Ccircle cx='21' cy='21' r='18' stroke='url(%23neuralGrad)' stroke-width='0.5' stroke-dasharray='4 4' opacity='0.3'/%3E%3Ccircle cx='21' cy='21' r='14' stroke='url(%23neuralGrad)' stroke-width='1' opacity='0.5'/%3E%3Cpath d='M21 7V14' stroke='url(%23neuralGrad)' stroke-width='2' stroke-linecap='round' filter='url(%23glow)'/%3E%3Cpath d='M21 28V35' stroke='url(%23neuralGrad)' stroke-width='2' stroke-linecap='round' filter='url(%23glow)'/%3E%3Cpath d='M7 21H14' stroke='url(%23neuralGrad)' stroke-width='2' stroke-linecap='round' filter='url(%23glow)'/%3E%3Cpath d='M28 21H35' stroke='url(%23neuralGrad)' stroke-width='2' stroke-linecap='round' filter='url(%23glow)'/%3E%3Ccircle cx='21' cy='21' r='5' fill='url(%23neuralGrad)' filter='url(%23glow)'%3E%3Canimate attributeName='r' values='4.5;5.5;4.5' dur='3s' repeatCount='indefinite' /%3E%3C/circle%3E%3Ccircle cx='21' cy='7' r='2' fill='%23818cf8' /%3E%3Ccircle cx='21' cy='35' r='2' fill='%23c084fc' /%3E%3Ccircle cx='7' cy='21' r='2' fill='%23818cf8' /%3E%3Ccircle cx='35' cy='21' r='2' fill='%23c084fc' /%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script type="application/ld+json" id="structuredData"></script>
+  <script type="module" crossorigin>(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const n of document.querySelectorAll('link[rel="modulepreload"]'))o(n);new MutationObserver(n=>{for(const s of n)if(s.type==="childList")for(const i of s.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&o(i)}).observe(document,{childList:!0,subtree:!0});function t(n){const s={};return n.integrity&&(s.integrity=n.integrity),n.referrerPolicy&&(s.referrerPolicy=n.referrerPolicy),n.crossOrigin==="use-credentials"?s.credentials="include":n.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function o(n){if(n.ep)return;n.ep=!0;const s=t(n);fetch(n.href,s)}})();const c="Trend-AI",d="Intelligence Optimized";class m{constructor(){this.posts=[],this.filteredPosts=[],this.currentCategory="All Feed",this.init()}async init(){this.setupSearch(),this.setupTheme(),this.setupNewsletter(),this.initLightbox();try{const e=await fetch("./posts.json?v="+Date.now());if(e.ok){const t=await e.json();t&&t.length>0&&(this.posts=t.sort((o,n)=>new Date(n.date)-new Date(o.date)),this.filteredPosts=[...this.posts])}}catch(e){console.error("Failed to load posts",e)}this.renderCategories(),this.renderFooterCategories(),this.renderTrendingSidebar(),this.renderFeed(),this.handleRouting(),window.onpopstate=()=>this.handleRouting()}setupSearch(){const e=document.getElementById("searchInput");e&&(e.oninput=t=>this.handleSearch(t.target.value))}setupTheme(){const e=document.getElementById("themeToggle"),t=localStorage.getItem("theme")||"dark";document.documentElement.className=t,e.onclick=()=>{const n=document.documentElement.className==="dark"?"light":"dark";document.documentElement.className=n,localStorage.setItem("theme",n)}}setupNewsletter(){const e=document.getElementById("newsletterForm");e&&(e.onsubmit=t=>{t.preventDefault(),this.handleNewsletter()})}async handleNewsletter(){document.getElementById("newsletterEmail").value;const e=document.getElementById("newsletterMessage"),t=document.getElementById("newsletterSubmit"),o=t.textContent;t.disabled=!0,t.textContent="Joining...",e.classList.remove("hidden");try{await new Promise(n=>setTimeout(n,1500)),e.textContent="Welcome! You are on the list.",e.className="newsletter-message success",t.textContent="Success!",localStorage.setItem("isSubscribed","true"),setTimeout(()=>{document.getElementById("newsletterEmail").disabled=!0,t.textContent="Subscribed"},2e3)}catch{e.textContent="Error. Please try again.",e.className="newsletter-message error",t.disabled=!1,t.textContent=o}}handleRouting(){const t=new URLSearchParams(window.location.search).get("file");t?this.showPost(t):this.showFeed()}renderTrendingSidebar(){const e=document.getElementById("trendingPostsList");if(!e)return;const t=this.posts.filter(n=>n.trending).slice(0,5),o=t.length>0?t:this.posts.slice(0,5);e.innerHTML=o.map((n,s)=>`
+            <div class="trending-item" onclick="app.navigateToPost('${n.file}')">
+                <span class="trending-num">0${s+1}</span>
+                <div class="trending-item-content">
+                    <h4>${n.title}</h4>
+                    <span>${n.category} • ${n.date}</span>
+                </div>
+            </div>
+        `).join("")}renderCategories(){const e=["All Feed",...new Set(this.posts.map(o=>o.category))],t=document.getElementById("categoryBar");t.innerHTML=e.map(o=>`
+            <button class="cat-btn ${o===this.currentCategory?"active":""}" 
+                    onclick="app.filterByCategory('${o}')">${o}</button>
+        `).join("")}renderFooterCategories(){const e=[...new Set(this.posts.map(o=>o.category))],t=document.getElementById("footerCategories");t&&(t.innerHTML=`
+            <li><a href="#" onclick="app.showFeed(); return false;">Latest Insights</a></li>
+            ${e.map(o=>`
+                <li><a href="#" onclick="app.filterByCategory('${o}'); return false;">${o}</a></li>
+            `).join("")}
+        `)}showPolicy(e){const t=document.getElementById("policyModal"),o=document.getElementById("modalBody"),n={privacy:"<h2>Privacy Policy</h2><p>At Trend-AI, we take your privacy seriously. We only collect your email for the newsletter and never share it with third parties. We use industry-standard encryption to protect your data.</p>",terms:"<h2>Terms of Service</h2><p>By using Trend-AI, you agree to our terms. All content is for informational purposes only. We do not provide financial or legal advice. AI trends evolve rapidly; always verify critical information.</p>",editorial:"<h2>Editorial Guidelines</h2><p>Our mission is to provide high-signal, objective reporting on AI breakthroughs. Every article is reviewed by our editorial team for technical accuracy and clarity before publication.</p>"};o.innerHTML=n[e]||"Content not found.",t.style.display="flex",document.body.style.overflow="hidden"}closeModal(){const e=document.getElementById("policyModal");e&&(e.style.display="none"),document.body.style.overflow="auto"}filterByCategory(e){this.currentCategory=e,this.renderCategories(),this.filteredPosts=e==="All Feed"?[...this.posts]:this.posts.filter(t=>t.category===e),this.renderFeed()}handleSearch(e){const t=e.toLowerCase();this.filteredPosts=this.posts.filter(o=>o.title.toLowerCase().includes(t)||o.description.toLowerCase().includes(t)),this.renderFeed()}renderFeed(){const e=document.getElementById("postsGrid"),t=document.getElementById("featuredPost");if(this.filteredPosts.length===0){e.innerHTML='<div class="loader">No insights found matching your criteria.</div>',t.innerHTML="";return}if(this.currentCategory==="All Feed"&&!document.getElementById("searchInput").value&&this.filteredPosts.length>0){const n=this.filteredPosts[0],s=this.filteredPosts.slice(1);t.innerHTML=`
+                <div class="featured-card" onclick="app.navigateToPost('${n.file}')">
+                    <div class="featured-image" style="background-image: url('${n.image}')"></div>
+                    <div class="featured-info">
+                        <span class="post-tag">${n.category}</span>
+                        <h1>${n.title}</h1>
+                        <p class="post-excerpt">${n.description}</p>
+                        <div class="post-meta">
+                            <span>By ${n.author}</span>
+                            <span>•</span>
+                            <span>${n.date}</span>
+                        </div>
+                    </div>
+                </div>
+            `,e.innerHTML=s.map(i=>this.createPostCard(i)).join("")}else t.innerHTML="",e.innerHTML=this.filteredPosts.map(n=>this.createPostCard(n)).join("")}createPostCard(e){return`
+            <div class="post-card" onclick="app.navigateToPost('${e.file}')">
+                <div class="post-card-image" style="background-image: url('${e.image}')"></div>
+                <div class="post-card-content">
+                    <span class="post-tag">${e.category}</span>
+                    <h3 class="post-title">${e.title}</h3>
+                    <p class="post-excerpt">${e.description}</p>
+                    <div class="post-meta">
+                        <span>${e.date}</span>
+                    </div>
+                </div>
+            </div>
+        `}navigateToPost(e){window.history.pushState({},"",`?file=${e}`),this.showPost(e)}updateMeta(e){document.title=e.title;const t=document.querySelector('meta[name="description"]');t&&t.setAttribute("content",e.description);const o=document.querySelector('meta[property="og:title"]');o&&o.setAttribute("content",e.title);const n=document.querySelector('meta[property="og:description"]');n&&n.setAttribute("content",e.description);const s=document.querySelector('meta[property="og:url"]');if(s&&s.setAttribute("content",e.url),e.image){const l=document.querySelector('meta[property="og:image"]');l&&l.setAttribute("content",e.image)}let i=document.querySelector('link[rel="canonical"]');i&&i.setAttribute("href",e.url);const r=document.getElementById("structuredData");if(r){const l=e.isArticle?{"@context":"https://schema.org","@type":"NewsArticle",headline:e.title,image:[e.image],datePublished:e.date,author:[{"@type":"Person",name:e.author}]}:{"@context":"https://schema.org","@type":"WebSite",name:c,url:e.url};r.textContent=JSON.stringify(l)}}showFeed(){document.getElementById("feedView").classList.remove("hidden"),document.getElementById("postView").classList.add("hidden"),window.scrollTo(0,0),this.updateMeta({title:`${c} | ${d}`,description:"Discover the latest trends in Artificial Intelligence at Trend-AI.",url:window.location.origin})}async showPost(e){const t=this.posts.find(n=>n.file===e);if(!t)return this.showFeed();this.updateMeta({title:`${t.title} | ${c}`,description:t.description,image:t.image,url:window.location.href,author:t.author,date:t.date,isArticle:!0}),document.getElementById("feedView").classList.add("hidden"),document.getElementById("postView").classList.remove("hidden"),window.scrollTo(0,0),document.getElementById("postHeader").innerHTML=`
+        <div class="post-header-tag">${t.category}</div>
+        <h1 class="post-title-main">${t.title}</h1>
+        <div class="post-header-meta">
+            <div class="author-info">
+                <span class="author-name">By ${t.author}</span>
+                <span class="meta-dot">•</span>
+                <span class="post-date">${t.date}</span>
+            </div>
+            <div id="readTime" class="reading-time"></div>
+        </div>
+    `,document.getElementById("postHero").innerHTML=`
+        <img src="${t.image}" class="post-hero-img article-img" alt="${t.title}">
+    `,this.setupSocialShare(t);const o=document.getElementById("postBody");o.innerHTML='<div class="loader">Unfolding the future...</div>';try{let n="";const s=await fetch(`./posts/${e}`);s.ok?n=await s.text():n=`## ${t.title}
+
+${t.description}`,n=n.replace(/^---\n[\s\S]*?\n---\n*/,"");const i=window.marked&&window.marked.parse?marked.parse(n):`<p>${n.replace(/\n/g,"<br>")}</p>`,r=document.createElement("div");r.innerHTML=i,r.querySelectorAll("h2, h3").forEach(l=>{l.id=l.innerText.toLowerCase().replace(/[^\w]+/g,"-")}),o.innerHTML=r.innerHTML,this.calculateReadTime(n),this.generateToC(r),this.initLightbox(),window.Prism&&Prism.highlightAll()}catch{o.innerHTML=`<p>${t.description}</p>`}this.renderRelatedPosts(t),window.dispatchEvent(new Event("scroll"))}calculateReadTime(e){const t=e.split(/\s+/).length,o=Math.ceil(t/200);document.getElementById("readTime").innerHTML=`
+            <svg style="vertical-align: middle; margin-right: 5px" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            ${o} min read
+        `}generateToC(e){const t=document.getElementById("tocList"),o=e.querySelectorAll("h2, h3");if(o.length<2){document.getElementById("tocContainer").style.display="none";return}document.getElementById("tocContainer").style.display="block",t.innerHTML=Array.from(o).map(n=>`
+            <a href="#${n.id}" class="toc-link" style="margin-left: ${n.tagName==="H3"?"15px":"0"}">${n.innerText}</a>
+        `).join(""),t.querySelectorAll(".toc-link").forEach(n=>{n.onclick=s=>{s.preventDefault();const i=document.getElementById(n.getAttribute("href").substring(1));window.scrollTo({top:i.offsetTop-100,behavior:"smooth"})}})}setupSocialShare(e){const t=document.getElementById("shareButtons"),o=encodeURIComponent(window.location.href),n=encodeURIComponent(e.title),s=[{name:"X",icon:'<path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>',url:`https://twitter.com/intent/tweet?text=${n}&url=${o}`},{name:"LinkedIn",icon:'<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle>',url:`https://www.linkedin.com/shareArticle?mini=true&url=${o}&title=${n}`},{name:"WhatsApp",icon:'<path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>',url:`https://api.whatsapp.com/send?text=${n}%20${o}`},{name:"Link",icon:'<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>',action:"copy"}];t.innerHTML=s.map(i=>`<button class="share-btn" data-action="${i.action||""}" data-url="${i.url||""}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${i.icon}</svg></button>`).join(""),t.querySelectorAll(".share-btn").forEach(i=>{i.onclick=()=>{i.dataset.action==="copy"?navigator.clipboard.writeText(window.location.href).then(()=>{const r=i.innerHTML;i.innerHTML="✓",setTimeout(()=>i.innerHTML=r,2e3)}):window.open(i.dataset.url,"_blank")}})}initLightbox(){const e=document.querySelectorAll(".post-body img, .post-hero-img"),t=document.getElementById("lightbox"),o=document.getElementById("lightboxImg"),n=document.querySelector(".lightbox-close");t&&(e.forEach(s=>{s.style.cursor="zoom-in",s.onclick=()=>{t.style.display="flex",o.src=s.src}}),n.onclick=()=>t.style.display="none",t.onclick=s=>{s.target===t&&(t.style.display="none")})}renderRelatedPosts(e){const t=document.getElementById("relatedPostsGrid"),o=this.posts.filter(s=>s.category===e.category&&s.file!==e.file).slice(0,3),n=o.length>0?o:this.posts.filter(s=>s.file!==e.file).slice(0,3);t.innerHTML=n.map(s=>this.createPostCard(s)).join("")}}const h=()=>{const a=document.getElementById("progressBar");if(!a)return;const e=document.body.scrollTop||document.documentElement.scrollTop,t=document.documentElement.scrollHeight-document.documentElement.clientHeight,o=e/t*100;a.style.width=o+"%",document.getElementById("scrollProgress").style.opacity=e>100?1:0};window.addEventListener("scroll",h);window.app=new m;</script>
+  <style rel="stylesheet" crossorigin>:root{--bg-primary: #030712;--bg-secondary: #0b0f1a;--card-bg: #111827;--card-border: #1f2937;--text-primary: #f9fafb;--text-secondary: #9ca3af;--accent: #6366f1;--accent-hover: #4f46e5;--nav-bg: rgba(3, 7, 18, .8)}html.light{--bg-primary: #f9fafb;--bg-secondary: #f3f4f6;--card-bg: #ffffff;--card-border: #e5e7eb;--text-primary: #111827;--text-secondary: #4b5563;--accent: #4f46e5;--accent-hover: #4338ca;--nav-bg: rgba(249, 250, 251, .8)}*{margin:0;padding:0;box-sizing:border-box;transition:background-color .3s,color .3s}body{font-family:Plus Jakarta Sans,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.6}h1,h2,h3,h4,.logo-text{font-family:Space Grotesk,sans-serif;font-weight:700}.container{max-width:1200px;margin:0 auto;padding:0 20px}.hidden{display:none!important}.navbar{position:fixed;top:0;left:0;right:0;height:72px;background:var(--nav-bg);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--card-border);z-index:1000}.header-content{height:100%;display:flex;align-items:center;justify-content:space-between}.logo{display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1)}.logo:hover{transform:scale(1.05);filter:drop-shadow(0 0 8px rgba(129,140,248,.4))}.logo-icon{width:42px;height:42px;display:flex;align-items:center;justify-content:center;overflow:visible}.logo-text{font-size:1.6rem;letter-spacing:-.04em;font-weight:800;color:var(--text-primary)}.accent-text{background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.nav-right{display:flex;align-items:center;gap:20px}.search-box{position:relative}.search-box input{background:var(--bg-secondary);border:1px solid var(--card-border);color:var(--text-primary);padding:8px 16px 8px 40px;border-radius:99px;width:240px;font-size:.9rem}.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-secondary);pointer-events:none}.theme-toggle{background:none;border:1px solid var(--card-border);color:var(--text-primary);cursor:pointer;padding:8px;border-radius:10px}.sun-icon{display:none}html.light .sun-icon{display:block}html.light .moon-icon{display:none}.progress-container{position:fixed;top:0;left:0;width:100%;height:3px;background:transparent;z-index:1001;opacity:0;transition:opacity .3s}.progress-bar{height:100%;background:var(--accent);width:0%}main.container{padding-top:100px;min-height:80vh}.main-layout{display:grid;grid-template-columns:1fr 320px;gap:40px}@media(max-width:1024px){.main-layout{grid-template-columns:1fr}.trending-sidebar{display:none}}.category-bar{display:flex;gap:10px;overflow-x:auto;padding-bottom:20px;margin-bottom:30px;scrollbar-width:none}.cat-btn{padding:8px 18px;border-radius:99px;background:var(--bg-secondary);border:1px solid var(--card-border);color:var(--text-secondary);cursor:pointer;white-space:nowrap;font-weight:500}.cat-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}.featured-post{margin-bottom:40px}.featured-card{display:grid;grid-template-columns:1.2fr 1fr;background:var(--card-bg);border-radius:20px;border:1px solid var(--card-border);overflow:hidden;cursor:pointer}.featured-image{width:100%;height:400px;background-size:cover;background-position:center;transition:transform .5s}.featured-card:hover .featured-image{transform:scale(1.02)}.featured-info{padding:40px;display:flex;flex-direction:column;justify-content:center}.post-tag{display:inline-block;padding:4px 12px;border-radius:6px;background:#6366f11a;color:var(--accent);font-weight:600;font-size:.75rem;text-transform:uppercase;margin-bottom:16px;width:fit-content}.featured-info h1{font-size:2.5rem;margin-bottom:16px;line-height:1.1}.post-excerpt{color:var(--text-secondary);font-size:1.1rem;margin-bottom:24px}.post-meta{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--text-secondary)}.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px;margin-bottom:60px}.post-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:20px;overflow:hidden;cursor:pointer}.post-card-image{height:200px;background-size:cover;background-position:center}.post-card-content{padding:24px}.post-card-content h3{font-size:1.25rem;margin-bottom:12px;line-height:1.3}.trending-sidebar{position:sticky;top:100px;height:fit-content}.sidebar-title{margin-bottom:20px;font-size:1.2rem}.trending-item{display:flex;gap:15px;margin-bottom:20px;cursor:pointer}.trending-num{font-size:1.5rem;font-family:Space Grotesk;color:var(--text-secondary);opacity:.3}.trending-item-content h4{font-size:1rem;margin-bottom:4px;line-height:1.2}.trending-item-content span{font-size:.8rem;color:var(--text-secondary)}.post-content-view{max-width:800px;margin:0 auto;padding-bottom:100px}.back-button{display:flex;align-items:center;gap:8px;background:none;border:none;color:var(--text-secondary);cursor:pointer;margin-bottom:30px;font-weight:600}.post-header{margin-bottom:40px}.post-header-tag{display:inline-block;padding:4px 12px;border-radius:6px;background:#6366f11a;color:var(--accent);font-weight:600;font-size:.8rem;text-transform:uppercase;margin-bottom:16px}.post-title-main{font-size:3rem;line-height:1.1;margin-bottom:20px}.post-header-meta{display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--card-border);color:var(--text-secondary)}.post-hero-img{width:100%;height:auto;border-radius:20px;margin-bottom:40px}.toc-container{background:var(--bg-secondary);padding:24px;border-radius:16px;border:1px solid var(--card-border);margin-bottom:40px}.toc-title{font-weight:700;margin-bottom:12px;font-family:Space Grotesk;color:var(--accent)}.toc-link{display:block;color:var(--text-secondary);text-decoration:none;margin-bottom:8px;font-size:.95rem}.toc-link:hover{color:var(--accent)}.md-content h2{font-size:2rem;margin:40px 0 20px}.md-content h3{font-size:1.5rem;margin:30px 0 15px}.md-content p{font-size:1.2rem;margin-bottom:24px;color:var(--text-secondary);line-height:1.8}.md-content blockquote{border-left:4px solid var(--accent);padding:20px 30px;background:var(--bg-secondary);font-style:italic;margin-bottom:30px;border-radius:0 16px 16px 0}.md-content pre{margin-bottom:30px;border-radius:12px;overflow:hidden}.share-container{margin:60px 0;display:flex;align-items:center;gap:20px;padding:24px;background:var(--bg-secondary);border-radius:16px;border:1px solid var(--card-border)}.share-buttons{display:flex;gap:12px}.share-btn{width:40px;height:40px;border-radius:10px;background:var(--card-bg);border:1px solid var(--card-border);color:var(--text-primary);cursor:pointer;display:flex;align-items:center;justify-content:center}.share-btn:hover{border-color:var(--accent);color:var(--accent)}.newsletter-section{background:var(--bg-secondary);padding:80px 0;margin-top:80px;border-top:1px solid var(--card-border)}.newsletter-content{display:flex;align-items:center;justify-content:space-between;gap:40px}.newsletter-form{display:flex;flex-direction:column;gap:10px;width:400px}.input-group{display:flex;gap:10px}.input-group input{flex:1;background:var(--card-bg);border:1px solid var(--card-border);color:var(--text-primary);padding:12px 20px;border-radius:10px}.input-group button{background:var(--accent);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-weight:700;cursor:pointer}.footer{padding:80px 0 40px;background:var(--bg-secondary);border-top:1px solid var(--card-border)}.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr;gap:40px}}@media(max-width:600px){.footer-grid{grid-template-columns:1fr}}.footer-brand .brand-description{margin-top:20px;color:var(--text-secondary);font-size:.95rem;line-height:1.7;max-width:320px}.footer-column h4{color:var(--text-primary);margin-bottom:24px;font-size:1.1rem;text-transform:uppercase;letter-spacing:.05em}.footer-column ul{list-style:none;padding:0}.footer-column ul li{margin-bottom:12px}.footer-column ul li a{color:var(--text-secondary);text-decoration:none;font-size:.95rem;transition:color .2s}.footer-column ul li a:hover{color:var(--accent)}.social-links{display:flex;gap:15px}.social-links a{width:40px;height:40px;border-radius:10px;background:var(--card-bg);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;color:var(--text-secondary);transition:all .3s}.social-links a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}.footer-bottom{padding-top:40px;border-top:1px solid var(--card-border);display:flex;justify-content:space-between;align-items:center;color:var(--text-secondary);font-size:.9rem}@media(max-width:600px){.footer-bottom{flex-direction:column;gap:20px;text-align:center}}.back-to-top{background:transparent;border:1px solid var(--card-border);color:var(--text-secondary);padding:8px 16px;border-radius:8px;cursor:pointer;transition:all .2s;font-weight:600}.back-to-top:hover{border-color:var(--accent);color:var(--accent);background:#6366f10d}.modal{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;background:#030712cc;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:20px;animation:fadeIn .3s ease}.modal-content{background:var(--card-bg);border:1px solid var(--card-border);padding:40px;border-radius:20px;max-width:600px;width:100%;position:relative;box-shadow:0 25px 50px -12px #00000080}.close-modal{position:absolute;top:20px;right:20px;font-size:24px;cursor:pointer;color:var(--text-secondary)}.close-modal:hover{color:var(--accent)}#modalBody h2{margin-bottom:20px;color:var(--accent);font-family:Space Grotesk,sans-serif}#modalBody p{line-height:1.8;color:var(--text-secondary);font-size:1.1rem}.lightbox{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;background:#030712f2;align-items:center;justify-content:center;padding:40px}.lightbox-content{max-width:100%;max-height:100%;border-radius:12px}.lightbox-close{position:absolute;top:40px;right:40px;color:#fff;font-size:40px;cursor:pointer}@keyframes fadeIn{0%{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.featured-card,.post-card{animation:fadeIn .5s ease forwards}</style>
+</head>
+<body>
+    <div id="scrollProgress" class="progress-container"><div id="progressBar" class="progress-bar"></div></div>
+    <header class="navbar">
+        <div class="container header-content">
+            <div class="logo" onclick="app.showFeed()">
+                <span class="logo-icon">
+                    <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="neuralGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#818cf8" />
+                                <stop offset="100%" stop-color="#c084fc" />
+                            </linearGradient>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <!-- Orbital Paths -->
+                        <circle cx="21" cy="21" r="18" stroke="url(#neuralGrad)" stroke-width="0.5" stroke-dasharray="4 4" opacity="0.3"/>
+                        <circle cx="21" cy="21" r="14" stroke="url(#neuralGrad)" stroke-width="1" opacity="0.5"/>
+                        
+                        <!-- Neural Connections -->
+                        <path d="M21 7V14" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
+                        <path d="M21 28V35" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
+                        <path d="M7 21H14" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
+                        <path d="M28 21H35" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
+                        
+                        <!-- Core Nodes -->
+                        <circle cx="21" cy="21" r="5" fill="url(#neuralGrad)" filter="url(#glow)">
+                            <animate attributeName="r" values="4.5;5.5;4.5" dur="3s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="21" cy="7" r="2" fill="#818cf8" />
+                        <circle cx="21" cy="35" r="2" fill="#c084fc" />
+                        <circle cx="7" cy="21" r="2" fill="#818cf8" />
+                        <circle cx="35" cy="21" r="2" fill="#c084fc" />
+                    </svg>
+                </span>
+                <span class="logo-text">Trend<span class="accent-text">-AI</span></span>
+            </div>
+            <div class="nav-right">
+                <div class="search-box"><input type="text" id="searchInput" placeholder="Search insights..."><svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme"><svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg><svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <section id="feedView"><div class="category-bar" id="categoryBar"></div><div class="main-layout"><div class="feed-content"><div id="featuredPost" class="featured-post"></div><div class="posts-grid" id="postsGrid"></div></div><aside class="trending-sidebar"><h3 class="sidebar-title">Trending Now</h3><div id="trendingPostsList"></div></aside></div></section>
+        <article id="postView" class="post-content-view hidden"><button class="back-button" onclick="app.showFeed()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Back to Feed</button><div id="postHeader" class="post-header"></div><div id="postHero" class="post-hero-container"></div><div id="tocContainer" class="toc-container"><div class="toc-title">Table of Contents</div><div id="tocList"></div></div><div id="postBody" class="post-body md-content"></div><div class="share-container"><span class="share-label">Share Insight:</span><div id="shareButtons" class="share-buttons"></div></div><section id="relatedPosts" class="related-posts"><h2 class="section-title">Related Insights</h2><div id="relatedPostsGrid" class="posts-grid"></div></section></article>
+    </main>
+    <section class="newsletter-section"><div class="container newsletter-content"><div class="newsletter-text"><h2>Stay Ahead of the Curve</h2><p>Join 50,000+ technologists receiving our weekly deep dive into the future of AI.</p></div><form id="newsletterForm" class="newsletter-form"><div class="input-group"><input type="email" id="newsletterEmail" placeholder="Enter your email" required><button type="submit" id="newsletterSubmit">Subscribe</button></div><p id="newsletterMessage" class="newsletter-message hidden"></p></form></div></section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">
+                            <svg width="32" height="32" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="21" cy="21" r="18" stroke="url(#neuralGrad)" stroke-width="0.5" stroke-dasharray="4 4" opacity="0.3"/>
+                                <circle cx="21" cy="21" r="14" stroke="url(#neuralGrad)" stroke-width="1" opacity="0.5"/>
+                                <path d="M21 7V14" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M21 28V35" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M7 21H14" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M28 21H35" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="21" cy="21" r="5" fill="url(#neuralGrad)"/>
+                            </svg>
+                        </span>
+                        <span class="logo-text">Trend<span class="accent-text">-AI</span></span>
+                    </div>
+                    <p class="brand-description">Intelligence Optimized. Your daily destination for high-signal insights into Artificial Intelligence, Robotics, and the Future of the digital economy.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <ul id="footerCategories">
+                        <!-- Dynamically populated -->
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#newsletterForm">Newsletter</a></li>
+                        <li><a href="#" onclick="app.showPolicy('privacy'); return false;">Privacy Policy</a></li>
+                        <li><a href="#" onclick="app.showPolicy('terms'); return false;">Terms of Service</a></li>
+                        <li><a href="#" onclick="app.showPolicy('editorial'); return false;">Editorial Guidelines</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:trendyaidev@gmail.com">trendyaidev@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Trend-AI. Powered by Intelligence. All rights reserved.</p>
+                <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to Top">Back to Top ↑</button>
+            </div>
+        </div>
+    </footer>
+    <div id="lightbox" class="lightbox"><span class="lightbox-close">&times;</span><img class="lightbox-content" id="lightboxImg" alt="Expanded image view"></div>
+    <div id="policyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="app.closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+</body>
+</html>

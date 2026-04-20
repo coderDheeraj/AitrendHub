@@ -1,0 +1,21 @@
+{
+  "name": "Trend-AI | Intelligence Optimized",
+  "short_name": "Trend-AI",
+  "description": "Trend-AI delivers the latest breakthroughs in Artificial Intelligence, Robotics, and Future Tech.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#030712",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg width='192' height='192' viewBox='0 0 42 42' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='neuralGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23818cf8' /%3E%3Cstop offset='100%25' stop-color='%23c084fc' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='21' cy='21' r='18' stroke='url(%23neuralGrad)' stroke-width='0.5' /%3E%3Ccircle cx='21' cy='21' r='14' stroke='url(%23neuralGrad)' stroke-width='1' /%3E%3Ccircle cx='21' cy='21' r='5' fill='url(%23neuralGrad)' /%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg width='512' height='512' viewBox='0 0 42 42' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='neuralGrad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23818cf8' /%3E%3Cstop offset='100%25' stop-color='%23c084fc' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='21' cy='21' r='18' stroke='url(%23neuralGrad)' stroke-width='0.5' /%3E%3Ccircle cx='21' cy='21' r='14' stroke='url(%23neuralGrad)' stroke-width='1' /%3E%3Ccircle cx='21' cy='21' r='5' fill='url(%23neuralGrad)' /%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

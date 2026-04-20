@@ -1,0 +1,11 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="600" fill="#0F172A"/>
+<rect x="300" y="200" width="200" height="200" rx="20" fill="url(#paint0_linear)"/>
+<defs>
+<linearGradient id="paint0_linear" x1="400" y1="200" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+<stop stop-color="#8B5CF6"/>
+<stop offset="1" stop-color="#6D28D9"/>
+</linearGradient>
+</defs>
+<text x="400" y="450" text-anchor="middle" fill="white" font-family="Arial" font-size="24" font-weight="bold">ROBOTICS AI</text>
+</svg>
