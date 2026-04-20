@@ -385,8 +385,7 @@ class TrendAI {
         if (body) {
             body.innerHTML = '<div class="loader">Loading...</div>';
             try {
-                const response = await fetch(`./pages/${page.file}`);
-                let content = response.ok ? await response.text() : `# ${page.title}\n\nContent coming soon.`;
+                let content = page.content || `# ${page.title}\n\nContent coming soon.`;
                 content = content.trim().replace(/^---\s*[\r\n]+([\s\S]*?)[\r\n]+---\s*[\r\n]*/, '');
                 content = content.replace(/--- slide ---/g, '---');
                 
@@ -455,15 +454,7 @@ class TrendAI {
             body.innerHTML = '<div class="loader">Unfolding the future...</div>';
 
             try {
-                let content = '';
-                const response = await fetch(`./posts/${post.file}`);
-
-                if (response.ok) {
-                    content = await response.text();
-                } else {
-                    content = `## ${post.title}\n\n${post.description}`;
-                }
-
+                let content = post.content || `## ${post.title}\n\n${post.description}`;
                 content = content.trim().replace(/^---\s*[\r\n]+([\s\S]*?)[\r\n]+---\s*[\r\n]*/, '');
                 content = content.replace(/--- slide ---/g, '---');
 

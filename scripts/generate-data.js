@@ -49,11 +49,13 @@ function syncData(dir, publicDir, outputPath, isPost = true) {
         const { data } = parseFrontMatter(content);
 
         if (data.title) {
+            const { content: bodyContent } = parseFrontMatter(content);
             const entry = {
                 file: file,
                 slug: file.replace('.md', ''),
                 title: data.title,
                 description: data.description || '',
+                content: bodyContent,
                 ...data
             };
             
@@ -67,7 +69,7 @@ function syncData(dir, publicDir, outputPath, isPost = true) {
             }
 
             resultData.push(entry);
-            fs.copyFileSync(fullPath, path.join(publicDir, file));
+            // No need to copy file - content is embedded in JSON
         }
     });
 
