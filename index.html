@@ -45,17 +45,12 @@
                                 </feMerge>
                             </filter>
                         </defs>
-                        <!-- Orbital Paths -->
                         <circle cx="21" cy="21" r="18" stroke="url(#neuralGrad)" stroke-width="0.5" stroke-dasharray="4 4" opacity="0.3"/>
                         <circle cx="21" cy="21" r="14" stroke="url(#neuralGrad)" stroke-width="1" opacity="0.5"/>
-                        
-                        <!-- Neural Connections -->
                         <path d="M21 7V14" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
                         <path d="M21 28V35" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
                         <path d="M7 21H14" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
                         <path d="M28 21H35" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
-                        
-                        <!-- Core Nodes -->
                         <circle cx="21" cy="21" r="5" fill="url(#neuralGrad)" filter="url(#glow)">
                             <animate attributeName="r" values="4.5;5.5;4.5" dur="3s" repeatCount="indefinite" />
                         </circle>
@@ -67,6 +62,11 @@
                 </span>
                 <span class="logo-text">Trend<span class="accent-text">-AI</span></span>
             </div>
+            <nav class="nav-links">
+                <a href="#" onclick="app.navigateToFeed(); return false;">Home</a>
+                <a href="#" onclick="app.navigateToPage('about'); return false;">About</a>
+                <a href="#" onclick="app.navigateToPage('contact'); return false;">Contact</a>
+            </nav>
             <div class="nav-right">
                 <div class="search-box"><input type="text" id="searchInput" placeholder="Search insights..."><svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></div>
                 <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme"><svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg><svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button>
@@ -74,8 +74,8 @@
         </div>
     </header>
     <main class="container">
-        <section id="feedView"><div class="category-bar" id="categoryBar"></div><div class="main-layout"><div class="feed-content"><div id="featuredPost" class="featured-post"></div><div class="posts-grid" id="postsGrid"></div></div><aside class="trending-sidebar"><h3 class="sidebar-title">Trending Now</h3><div id="trendingPostsList"></div></aside></div></section>
-        <article id="postView" class="post-content-view hidden"><button class="back-button" onclick="app.showFeed()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Back to Feed</button><div id="postHeader" class="post-header"></div><div id="postHero" class="post-hero-container"></div><div id="tocContainer" class="toc-container"><div class="toc-title">Table of Contents</div><div id="tocList"></div></div><div id="postBody" class="post-body md-content"></div><div class="share-container"><span class="share-label">Share Insight:</span><div id="shareButtons" class="share-buttons"></div></div><section id="relatedPosts" class="related-posts"><h2 class="section-title">Related Insights</h2><div id="relatedPostsGrid" class="posts-grid"></div></section></article>
+        <section id="feedView"><div class="category-bar" id="categoryBar"></div><div class="main-layout"><div class="feed-content"><div id="featuredPost" class="featured-post"></div><div class="posts-grid" id="postsGrid"></div><div id="pagination" class="pagination"></div></div><aside class="trending-sidebar"><h3 class="sidebar-title">Trending Now</h3><div id="trendingPostsList"></div></aside></div></section>
+        <article id="postView" class="post-content-view hidden"><button class="back-button" onclick="app.navigateToFeed()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>Back to Feed</button><div id="postHeader" class="post-header"></div><div id="postHero" class="post-hero-container"></div><div id="tocContainer" class="toc-container"><div class="toc-title">Table of Contents</div><div id="tocList"></div></div><div id="postBody" class="post-body md-content"></div><div class="share-container"><span class="share-label">Share Insight:</span><div id="shareButtons" class="share-buttons"></div></div><section id="relatedPosts" class="related-posts"><h2 class="section-title">Related Insights</h2><div id="relatedPostsGrid" class="posts-grid"></div></section></article>
     </main>
     <section class="newsletter-section"><div class="container newsletter-content"><div class="newsletter-text"><h2>Stay Ahead of the Curve</h2><p>Join 50,000+ technologists receiving our weekly deep dive into the future of AI.</p></div><form id="newsletterForm" class="newsletter-form"><div class="input-group"><input type="email" id="newsletterEmail" placeholder="Enter your email" required><button type="submit" id="newsletterSubmit">Subscribe</button></div><p id="newsletterMessage" class="newsletter-message hidden"></p></form></div></section>
     <footer class="footer">
@@ -107,10 +107,11 @@
                 <div class="footer-column">
                     <h4>Resources</h4>
                     <ul>
-                        <li><a href="#newsletterForm">Newsletter</a></li>
-                        <li><a href="#" onclick="app.showPolicy('privacy'); return false;">Privacy Policy</a></li>
-                        <li><a href="#" onclick="app.showPolicy('terms'); return false;">Terms of Service</a></li>
-                        <li><a href="#" onclick="app.showPolicy('editorial'); return false;">Editorial Guidelines</a></li>
+                        <li><a href="#" onclick="app.navigateToPage('about'); return false;">About Us</a></li>
+                        <li><a href="#" onclick="app.navigateToPage('contact'); return false;">Contact</a></li>
+                        <li><a href="#" onclick="app.navigateToPage('privacy-policy'); return false;">Privacy Policy</a></li>
+                        <li><a href="#" onclick="app.navigateToPage('disclaimer'); return false;">Disclaimer</a></li>
+                        <li><a href="#" onclick="app.navigateToPage('terms-conditions'); return false;">Terms & Conditions</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">

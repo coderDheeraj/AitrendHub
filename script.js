@@ -1,32 +1,48 @@
-// Trend-AI - Core AI News Engine
+// Trend-AI - Core AI News Engine (Vite-Native Automation)
 const SITE_NAME = "Trend-AI";
 const SITE_TAGLINE = "Intelligence Optimized";
 
 class TrendAI {
     constructor() {
         this.posts = [];
+        this.pages = [];
         this.filteredPosts = [];
         this.currentCategory = 'All Feed';
+        this.currentPage = 1;
+        this.postsPerPage = 9;
         this.init();
     }
 
     async init() {
+        if (window.marked) {
+            marked.setOptions({
+                gfm: true,
+                breaks: true,
+                headerIds: true,
+                mangle: false
+            });
+        }
         this.setupSearch();
         this.setupTheme();
         this.setupNewsletter();
         this.initLightbox();
 
         try {
-            const response = await fetch('./posts.json?v=' + Date.now());
-            if (response.ok) {
-                const data = await response.json();
-                if (data && data.length > 0) {
-                    this.posts = data.sort((a, b) => new Date(b.date) - new Date(a.date));
-                    this.filteredPosts = [...this.posts];
-                }
+            const [postsRes, pagesRes] = await Promise.all([
+                fetch('./posts.json?v=' + Date.now()),
+                fetch('./pages.json?v=' + Date.now())
+            ]);
+
+            if (postsRes.ok) {
+                const data = await postsRes.json();
+                this.posts = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+                this.filteredPosts = [...this.posts];
+            }
+            if (pagesRes.ok) {
+                this.pages = await pagesRes.json();
             }
         } catch (e) {
-            console.error("Failed to load posts", e);
+            console.error("Failed to load content", e);
         }
 
         this.renderCategories();
@@ -97,8 +113,12 @@ class TrendAI {
     handleRouting() {
         const params = new URLSearchParams(window.location.search);
         const file = params.get('file');
+        const page = params.get('page');
+        
         if (file) {
             this.showPost(file);
+        } else if (page) {
+            this.showPage(page);
         } else {
             this.showFeed();
         }
@@ -124,6 +144,7 @@ class TrendAI {
     renderCategories() {
         const categories = ['All Feed', ...new Set(this.posts.map(p => p.category))];
         const bar = document.getElementById('categoryBar');
+        if (!bar) return;
         bar.innerHTML = categories.map(cat => `
             <button class="cat-btn ${cat === this.currentCategory ? 'active' : ''}" 
                     onclick="app.filterByCategory('${cat}')">${cat}</button>
@@ -152,9 +173,11 @@ class TrendAI {
             editorial: `<h2>Editorial Guidelines</h2><p>Our mission is to provide high-signal, objective reporting on AI breakthroughs. Every article is reviewed by our editorial team for technical accuracy and clarity before publication.</p>`
         };
         
-        body.innerHTML = content[type] || 'Content not found.';
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+        if (body) body.innerHTML = content[type] || 'Content not found.';
+        if (modal) {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
     }
 
     closeModal() {
@@ -165,6 +188,7 @@ class TrendAI {
 
     filterByCategory(category) {
         this.currentCategory = category;
+        this.currentPage = 1;
         this.renderCategories();
         this.filteredPosts = category === 'All Feed'
             ? [...this.posts]
@@ -174,6 +198,7 @@ class TrendAI {
 
     handleSearch(query) {
         const q = query.toLowerCase();
+        this.currentPage = 1;
         this.filteredPosts = this.posts.filter(p =>
             p.title.toLowerCase().includes(q) ||
             p.description.toLowerCase().includes(q)
@@ -184,6 +209,7 @@ class TrendAI {
     renderFeed() {
         const grid = document.getElementById('postsGrid');
         const featured = document.getElementById('featuredPost');
+        if (!grid || !featured) return;
 
         if (this.filteredPosts.length === 0) {
             grid.innerHTML = '<div class="loader">No insights found matching your criteria.</div>';
@@ -191,12 +217,13 @@ class TrendAI {
             return;
         }
 
-        const showFeatured = this.currentCategory === 'All Feed' && !document.getElementById('searchInput').value;
+        const showFeatured = this.currentCategory === 'All Feed' && !document.getElementById('searchInput').value && this.currentPage === 1;
 
-        if (showFeatured && this.filteredPosts.length > 0) {
-            const top = this.filteredPosts[0];
-            const others = this.filteredPosts.slice(1);
-
+        let postsToDisplay = [...this.filteredPosts];
+        
+        if (showFeatured) {
+            const top = postsToDisplay[0];
+            postsToDisplay = postsToDisplay.slice(1);
             featured.innerHTML = `
                 <div class="featured-card" onclick="app.navigateToPost('${top.file}')">
                     <div class="featured-image" style="background-image: url('${top.image}')"></div>
@@ -212,12 +239,53 @@ class TrendAI {
                     </div>
                 </div>
             `;
-
-            grid.innerHTML = others.map(post => this.createPostCard(post)).join('');
         } else {
             featured.innerHTML = '';
-            grid.innerHTML = this.filteredPosts.map(post => this.createPostCard(post)).join('');
         }
+
+        // Pagination Logic
+        const start = (this.currentPage - 1) * this.postsPerPage;
+        const end = start + this.postsPerPage;
+        const pagePosts = postsToDisplay.slice(start, end);
+
+        grid.innerHTML = pagePosts.map(post => this.createPostCard(post)).join('');
+        this.renderPagination(postsToDisplay.length);
+    }
+
+    renderPagination(totalPosts) {
+        const pagination = document.getElementById('pagination');
+        if (!pagination) return;
+
+        const totalPages = Math.ceil(totalPosts / this.postsPerPage);
+        if (totalPages <= 1) {
+            pagination.innerHTML = '';
+            return;
+        }
+
+        let html = `
+            <button class="pagination-item ${this.currentPage === 1 ? 'disabled' : ''}" 
+                    onclick="app.changePage(${this.currentPage - 1})" ${this.currentPage === 1 ? 'disabled' : ''}>&laquo; Prev</button>
+        `;
+
+        for (let i = 1; i <= totalPages; i++) {
+            html += `
+                <button class="pagination-item ${i === this.currentPage ? 'active' : ''}" 
+                        onclick="app.changePage(${i})">${i}</button>
+            `;
+        }
+
+        html += `
+            <button class="pagination-item ${this.currentPage === totalPages ? 'disabled' : ''}" 
+                    onclick="app.changePage(${this.currentPage + 1})" ${this.currentPage === totalPages ? 'disabled' : ''}>Next &raquo;</button>
+        `;
+
+        pagination.innerHTML = html;
+    }
+
+    changePage(page) {
+        this.currentPage = page;
+        this.renderFeed();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     createPostCard(post) {
@@ -234,6 +302,16 @@ class TrendAI {
                 </div>
             </div>
         `;
+    }
+
+    navigateToFeed() {
+        window.history.pushState({}, '', window.location.pathname);
+        this.showFeed();
+    }
+
+    navigateToPage(slug) {
+        window.history.pushState({}, '', `?page=${slug}`);
+        this.showPage(slug);
     }
 
     navigateToPost(file) {
@@ -259,35 +337,71 @@ class TrendAI {
 
         let canonical = document.querySelector('link[rel="canonical"]');
         if (canonical) canonical.setAttribute('href', data.url);
-
-        const structuredData = document.getElementById('structuredData');
-        if (structuredData) {
-            const schema = data.isArticle ? {
-                "@context": "https://schema.org",
-                "@type": "NewsArticle",
-                "headline": data.title,
-                "image": [data.image],
-                "datePublished": data.date,
-                "author": [{ "@type": "Person", "name": data.author }]
-            } : {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                "name": SITE_NAME,
-                "url": data.url
-            };
-            structuredData.textContent = JSON.stringify(schema);
-        }
     }
 
     showFeed() {
         document.getElementById('feedView').classList.remove('hidden');
         document.getElementById('postView').classList.add('hidden');
+        this.currentCategory = 'All Feed';
+        this.renderCategories();
         window.scrollTo(0, 0);
         this.updateMeta({
             title: `${SITE_NAME} | ${SITE_TAGLINE}`,
             description: 'Discover the latest trends in Artificial Intelligence at Trend-AI.',
             url: window.location.origin
         });
+    }
+
+    async showPage(slug) {
+        const page = this.pages.find(p => p.slug === slug);
+        if (!page) return this.showFeed();
+
+        this.updateMeta({
+            title: `${page.title} | ${SITE_NAME}`,
+            description: page.description,
+            url: window.location.href
+        });
+
+        const feedView = document.getElementById('feedView');
+        const postView = document.getElementById('postView');
+        if (feedView) feedView.classList.add('hidden');
+        if (postView) postView.classList.remove('hidden');
+        window.scrollTo(0, 0);
+
+        const header = document.getElementById('postHeader');
+        if (header) {
+            header.innerHTML = `
+                <h1 class="post-title-main" style="margin-top: 20px">${page.title}</h1>
+            `;
+        }
+
+        const hero = document.getElementById('postHero');
+        if (hero) hero.innerHTML = '';
+
+        const body = document.getElementById('postBody');
+        const tocContainer = document.getElementById('tocContainer');
+        if (tocContainer) tocContainer.style.display = 'none';
+
+        if (body) {
+            body.innerHTML = '<div class="loader">Loading...</div>';
+            try {
+                const response = await fetch(`./pages/${page.file}`);
+                let content = response.ok ? await response.text() : `# ${page.title}\n\nContent coming soon.`;
+                content = content.trim().replace(/^---\s*[\r\n]+([\s\S]*?)[\r\n]+---\s*[\r\n]*/, '');
+                content = content.replace(/--- slide ---/g, '---');
+                
+                body.innerHTML = (window.marked && window.marked.parse) 
+                    ? marked.parse(content) 
+                    : content;
+                
+                if (window.Prism) Prism.highlightAll();
+            } catch (e) {
+                body.innerHTML = `<p>${page.description}</p>`;
+            }
+        }
+        
+        document.getElementById('relatedPosts').classList.add('hidden');
+        window.dispatchEvent(new Event('scroll'));
     }
 
     async showPost(file) {
@@ -304,73 +418,76 @@ class TrendAI {
             isArticle: true
         });
 
-        document.getElementById('feedView').classList.add('hidden');
-        document.getElementById('postView').classList.remove('hidden');
+        const feedView = document.getElementById('feedView');
+        const postView = document.getElementById('postView');
+        if (feedView) feedView.classList.add('hidden');
+        if (postView) postView.classList.remove('hidden');
+        document.getElementById('relatedPosts').classList.remove('hidden');
         window.scrollTo(0, 0);
 
-        document.getElementById('postHeader').innerHTML = `
-        <div class="post-header-tag">${post.category}</div>
-        <h1 class="post-title-main">${post.title}</h1>
-        <div class="post-header-meta">
-            <div class="author-info">
-                <span class="author-name">By ${post.author}</span>
-                <span class="meta-dot">•</span>
-                <span class="post-date">${post.date}</span>
-            </div>
-            <div id="readTime" class="reading-time"></div>
-        </div>
-    `;
+        const header = document.getElementById('postHeader');
+        if (header) {
+            header.innerHTML = `
+                <div class="post-header-tag">${post.category}</div>
+                <h1 class="post-title-main">${post.title}</h1>
+                <div class="post-header-meta">
+                    <div class="author-info">
+                        <span class="author-name">By ${post.author}</span>
+                        <span class="meta-dot">•</span>
+                        <span class="post-date">${post.date}</span>
+                    </div>
+                    <div id="readTime" class="reading-time"></div>
+                </div>
+            `;
+        }
 
-        document.getElementById('postHero').innerHTML = `
-        <img src="${post.image}" class="post-hero-img article-img" alt="${post.title}">
-    `;
+        const hero = document.getElementById('postHero');
+        if (hero) {
+            hero.innerHTML = `
+                <img src="${post.image}" class="post-hero-img article-img" alt="${post.title}">
+            `;
+        }
 
         this.setupSocialShare(post);
 
         const body = document.getElementById('postBody');
-        body.innerHTML = '<div class="loader">Unfolding the future...</div>';
+        if (body) {
+            body.innerHTML = '<div class="loader">Unfolding the future...</div>';
 
-        try {
-            let content = '';
+            try {
+                let content = '';
+                const response = await fetch(`./posts/${post.file}`);
 
-            // ✅ TRY TO FETCH FULL MARKDOWN FILE
-            const response = await fetch(`./posts/${file}`);
+                if (response.ok) {
+                    content = await response.text();
+                } else {
+                    content = `## ${post.title}\n\n${post.description}`;
+                }
 
-            if (response.ok) {
-                content = await response.text();  // FULL ARTICLE HERE
-            } else {
-                // fallback if file not found
-                content = `## ${post.title}\n\n${post.description}`;
+                content = content.trim().replace(/^---\s*[\r\n]+([\s\S]*?)[\r\n]+---\s*[\r\n]*/, '');
+                content = content.replace(/--- slide ---/g, '---');
+
+                const htmlContent = (window.marked && window.marked.parse)
+                    ? marked.parse(content)
+                    : `<p>${content.replace(/\n/g, '<br>')}</p>`;
+
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = htmlContent;
+
+                tempDiv.querySelectorAll('h2, h3').forEach(header => {
+                    header.id = header.innerText.toLowerCase().replace(/[^\w]+/g, '-');
+                });
+
+                body.innerHTML = tempDiv.innerHTML;
+                this.calculateReadTime(content);
+                this.generateToC(tempDiv);
+                this.initLightbox();
+
+                if (window.Prism) Prism.highlightAll();
+
+            } catch (error) {
+                body.innerHTML = `<p>${post.description}</p>`;
             }
-
-            // ✅ Strip YAML frontmatter if present
-            content = content.replace(/^---\n[\s\S]*?\n---\n*/, '');
-
-            // ✅ Convert markdown to HTML
-            const htmlContent = (window.marked && window.marked.parse)
-                ? marked.parse(content)
-                : `<p>${content.replace(/\n/g, '<br>')}</p>`;
-
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = htmlContent;
-
-            // ✅ Add IDs for TOC
-            tempDiv.querySelectorAll('h2, h3').forEach(header => {
-                header.id = header.innerText.toLowerCase().replace(/[^\w]+/g, '-');
-            });
-
-            body.innerHTML = tempDiv.innerHTML;
-
-            // ✅ Accurate read time (NOW FULL CONTENT)
-            this.calculateReadTime(content);
-
-            this.generateToC(tempDiv);
-            this.initLightbox();
-
-            if (window.Prism) Prism.highlightAll();
-
-        } catch (error) {
-            body.innerHTML = `<p>${post.description}</p>`;
         }
 
         this.renderRelatedPosts(post);
@@ -380,34 +497,43 @@ class TrendAI {
     calculateReadTime(text) {
         const words = text.split(/\s+/).length;
         const minutes = Math.ceil(words / 200);
-        document.getElementById('readTime').innerHTML = `
-            <svg style="vertical-align: middle; margin-right: 5px" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            ${minutes} min read
-        `;
+        const rt = document.getElementById('readTime');
+        if (rt) {
+            rt.innerHTML = `
+                <svg style="vertical-align: middle; margin-right: 5px" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                ${minutes} min read
+            `;
+        }
     }
 
     generateToC(tempDiv) {
         const tocList = document.getElementById('tocList');
+        const tocContainer = document.getElementById('tocContainer');
+        if (!tocList || !tocContainer) return;
+
         const headers = tempDiv.querySelectorAll('h2, h3');
         if (headers.length < 2) {
-            document.getElementById('tocContainer').style.display = 'none';
+            tocContainer.style.display = 'none';
             return;
         }
-        document.getElementById('tocContainer').style.display = 'block';
+        tocContainer.style.display = 'block';
         tocList.innerHTML = Array.from(headers).map(header => `
             <a href="#${header.id}" class="toc-link" style="margin-left: ${header.tagName === 'H3' ? '15px' : '0'}">${header.innerText}</a>
         `).join('');
+        
         tocList.querySelectorAll('.toc-link').forEach(link => {
             link.onclick = (e) => {
                 e.preventDefault();
                 const target = document.getElementById(link.getAttribute('href').substring(1));
-                window.scrollTo({ top: target.offsetTop - 100, behavior: 'smooth' });
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                window.scrollTo({ top: target.offsetTop - navbarHeight - 20, behavior: 'smooth' });
             };
         });
     }
 
     setupSocialShare(post) {
         const shareButtons = document.getElementById('shareButtons');
+        if (!shareButtons) return;
         const url = encodeURIComponent(window.location.href);
         const title = encodeURIComponent(post.title);
         const platforms = [
@@ -437,17 +563,19 @@ class TrendAI {
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const close = document.querySelector('.lightbox-close');
-        if (!lightbox) return;
+        if (!lightbox || !lightboxImg) return;
+
         images.forEach(img => {
             img.style.cursor = 'zoom-in';
             img.onclick = () => { lightbox.style.display = "flex"; lightboxImg.src = img.src; };
         });
-        close.onclick = () => lightbox.style.display = "none";
+        if (close) close.onclick = () => lightbox.style.display = "none";
         lightbox.onclick = (e) => { if (e.target === lightbox) lightbox.style.display = "none"; };
     }
 
     renderRelatedPosts(currentPost) {
         const relatedGrid = document.getElementById('relatedPostsGrid');
+        if (!relatedGrid) return;
         const related = this.posts.filter(p => p.category === currentPost.category && p.file !== currentPost.file).slice(0, 3);
         const display = related.length > 0 ? related : this.posts.filter(p => p.file !== currentPost.file).slice(0, 3);
         relatedGrid.innerHTML = display.map(post => this.createPostCard(post)).join('');
@@ -456,14 +584,17 @@ class TrendAI {
 
 const scrollHandler = () => {
     const bar = document.getElementById('progressBar');
+    const container = document.getElementById('scrollProgress');
     if (!bar) return;
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const scrolled = (winScroll / height) * 100;
     bar.style.width = scrolled + "%";
-    document.getElementById('scrollProgress').style.opacity = winScroll > 100 ? 1 : 0;
+    if (container) container.style.opacity = winScroll > 100 ? 1 : 0;
 };
 
 window.addEventListener('scroll', scrollHandler);
 
-window.app = new TrendAI();
+document.addEventListener('DOMContentLoaded', () => {
+    window.app = new TrendAI();
+});

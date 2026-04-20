@@ -1,0 +1,11 @@
+node_modules
+dist
+.DS_Store
+*.local
+.vscode
+.gemini
+package-lock.json
+public/posts.json
+public/pages.json
+public/posts/*.md
+public/pages/*.md
