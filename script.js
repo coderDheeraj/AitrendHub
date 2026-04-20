@@ -25,6 +25,7 @@ class TrendAI {
         this.setupSearch();
         this.setupTheme();
         this.setupNewsletter();
+        this.setupMobileMenu();
         this.initLightbox();
 
         try {
@@ -60,6 +61,33 @@ class TrendAI {
         const searchInput = document.getElementById('searchInput');
         if (!searchInput) return;
         searchInput.oninput = (e) => this.handleSearch(e.target.value);
+    }
+
+    setupMobileMenu() {
+        const toggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (toggle && navLinks) {
+            toggle.onclick = () => {
+                navLinks.classList.toggle('active');
+            };
+            
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.onclick = (e) => {
+                    navLinks.classList.remove('active');
+                    if (link.textContent === 'Home') {
+                        e.preventDefault();
+                        this.navigateToFeed();
+                    } else if (link.textContent === 'About') {
+                        e.preventDefault();
+                        this.navigateToPage('about');
+                    } else if (link.textContent === 'Contact') {
+                        e.preventDefault();
+                        this.navigateToPage('contact');
+                    }
+                };
+            });
+        }
     }
 
     setupTheme() {
@@ -339,6 +367,42 @@ class TrendAI {
 
         let canonical = document.querySelector('link[rel="canonical"]');
         if (canonical) canonical.setAttribute('href', data.url);
+
+        // JSON-LD Structured Data for SEO
+        const structuredData = document.getElementById('structuredData');
+        if (structuredData) {
+            let schema = {};
+            if (data.isArticle) {
+                schema = {
+                    "@context": "https://schema.org",
+                    "@type": "Article",
+                    "headline": data.title,
+                    "image": data.image ? [data.image] : [],
+                    "datePublished": data.date || new Date().toISOString(),
+                    "author": [{
+                        "@type": "Person",
+                        "name": data.author || "Trend-AI Editorial"
+                    }],
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "Trend-AI"
+                    }
+                };
+            } else {
+                schema = {
+                    "@context": "https://schema.org",
+                    "@type": "WebSite",
+                    "name": "Trend-AI",
+                    "url": data.url,
+                    "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": "https://trend-ai.dev/?q={search_term_string}",
+                        "query-input": "required name=search_term_string"
+                    }
+                };
+            }
+            structuredData.textContent = JSON.stringify(schema);
+        }
     }
 
     showFeed() {
