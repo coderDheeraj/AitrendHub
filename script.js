@@ -28,9 +28,11 @@ class TrendAI {
         this.initLightbox();
 
         try {
+            // Works on both GitHub Pages (/AitrendHub/) and custom domain (/)
+            const basePath = window.location.pathname.startsWith('/AitrendHub') ? '/AitrendHub/' : '/';
             const [postsRes, pagesRes] = await Promise.all([
-                fetch('posts.json?v=' + Date.now()),
-                fetch('pages.json?v=' + Date.now())
+                fetch(basePath + 'posts.json?v=' + Date.now()),
+                fetch(basePath + 'pages.json?v=' + Date.now())
             ]);
 
             if (postsRes.ok) {
