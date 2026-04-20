@@ -5,7 +5,3 @@ dist
 .vscode
 .gemini
 package-lock.json
-public/posts.json
-public/pages.json
-public/posts/*.md
-public/pages/*.md

@@ -1,0 +1,32 @@
+[
+    {
+        "file": "about.md",
+        "slug": "about",
+        "title": "About Us",
+        "description": "Learn more about Trend-AI, your daily destination for high-signal insights into Artificial Intelligence."
+    },
+    {
+        "file": "contact.md",
+        "slug": "contact",
+        "title": "Contact Us",
+        "description": "Get in touch with the Trend-AI editorial team for inquiries, feedback, or collaborations."
+    },
+    {
+        "file": "disclaimer.md",
+        "slug": "disclaimer",
+        "title": "Disclaimer",
+        "description": "Review the Disclaimer for Trend-AI regarding technical accuracy and information use."
+    },
+    {
+        "file": "privacy-policy.md",
+        "slug": "privacy-policy",
+        "title": "Privacy Policy",
+        "description": "Understand how Trend-AI collects, uses, and protects your information."
+    },
+    {
+        "file": "terms-conditions.md",
+        "slug": "terms-conditions",
+        "title": "Terms and Conditions",
+        "description": "Review the Terms and Conditions for using the Trend-AI website and services."
+    }
+]
