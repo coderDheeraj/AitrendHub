@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Ensure optimal crawl paths
+Disallow: /search.json
+Disallow: /assets/
+Disallow: /page*
+
+# Point directly to the main dynamically compiled sitemap
+Sitemap: https://trend-ai.dev/sitemap.xml
