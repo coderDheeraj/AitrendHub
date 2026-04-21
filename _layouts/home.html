@@ -1,0 +1,107 @@
+---
+layout: default
+---
+
+<section id="feedView">
+    <div class="category-bar" id="categoryBar">
+        <button class="cat-btn active" onclick="filterCategory('All Feed')">All Feed</button>
+        {% assign tags = "" %}
+        {% for post in site.posts %}
+            {% if post.category %}
+                {% assign tags = tags | append: post.category | append: "," %}
+            {% endif %}
+        {% endfor %}
+        {% assign tags_array = tags | split: "," | uniq | sort %}
+        {% for tag in tags_array %}
+            {% if tag != "" %}
+            <button class="cat-btn" onclick="filterCategory('{{ tag | escape }}')">{{ tag }}</button>
+            {% endif %}
+        {% endfor %}
+    </div>
+    
+    <div class="main-layout">
+        <div class="feed-content">
+            {% if paginator.page == 1 and paginator.posts.size > 0 %}
+            {% assign top = paginator.posts | first %}
+            <div id="featuredPost" class="featured-post">
+                <a href="{{ top.url | relative_url }}" class="featured-card" style="text-decoration: none; color: inherit;">
+                    <div class="featured-image" style="background-image: url('{{ top.image | relative_url }}')"></div>
+                    <div class="featured-info">
+                        <span class="post-tag">{{ top.category | default: "General" }}</span>
+                        <h1>{{ top.title }}</h1>
+                        <p class="post-excerpt">{{ top.description }}</p>
+                        <div class="post-meta">
+                            <span>{{ top.date | date: "%B %-d, %Y" }}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+            
+            <div class="posts-grid" id="postsGrid">
+                {% for post in paginator.posts %}
+                {% if paginator.page == 1 and forloop.first %}
+                  {% continue %}
+                {% endif %}
+                <a href="{{ post.url | relative_url }}" class="post-card" style="text-decoration: none; color: inherit;">
+                    <div class="post-card-image" style="background-image: url('{{ post.image | relative_url }}')"></div>
+                    <div class="post-card-content">
+                        <span class="post-tag">{{ post.category | default: "General" }}</span>
+                        <h3 class="post-title">{{ post.title }}</h3>
+                        <p class="post-excerpt">{{ post.description }}</p>
+                        <div class="post-meta">
+                            <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+            
+            <div id="pagination" class="pagination">
+                {% if paginator.total_pages > 1 %}
+                  {% if paginator.previous_page %}
+                    <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-item" style="text-decoration: none;">&laquo; Prev</a>
+                  {% else %}
+                    <button class="pagination-item disabled" disabled>&laquo; Prev</button>
+                  {% endif %}
+                  
+                  {% for page in (1..paginator.total_pages) %}
+                    {% if page == paginator.page %}
+                      <button class="pagination-item active">{{ page }}</button>
+                    {% elsif page == 1 %}
+                      <a href="{{ '/' | relative_url }}" class="pagination-item" style="text-decoration: none;">{{ page }}</a>
+                    {% else %}
+                      <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}" class="pagination-item" style="text-decoration: none;">{{ page }}</a>
+                    {% endif %}
+                  {% endfor %}
+                  
+                  {% if paginator.next_page %}
+                    <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-item" style="text-decoration: none;">Next &raquo;</a>
+                  {% else %}
+                    <button class="pagination-item disabled" disabled>Next &raquo;</button>
+                  {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        
+        <aside class="trending-sidebar">
+            <h3 class="sidebar-title">Trending Now</h3>
+            <div id="trendingPostsList">
+                {% assign trending_posts = site.posts | where: "trending", "true" | slice: 0, 5 %}
+                {% if trending_posts.size == 0 %}
+                    {% assign trending_posts = site.posts | slice: 0, 5 %}
+                {% endif %}
+                
+                {% for post in trending_posts %}
+                <a href="{{ post.url | relative_url }}" class="trending-item" style="text-decoration: none; color: inherit;">
+                    <span class="trending-num">0{{ forloop.index }}</span>
+                    <div class="trending-item-content">
+                        <h4>{{ post.title }}</h4>
+                        <span>{{ post.category | default: "General" }} • {{ post.date | date: "%b %d" }}</span>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </aside>
+    </div>
+</section>

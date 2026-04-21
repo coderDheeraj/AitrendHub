@@ -2,7 +2,7 @@
 layout: post
 title: "Upscale AI in Talks to Raise Funding at $2 Billion Valuation"
 date: 2026-04-16
-author: "AITrendHub Editorial"
+
 category: "Technology"
 image: "https://www.networkworld.com/wp-content/uploads/2025/09/4060135-0-70772200-1758291057-shutterstock_1006955335.jpg?resize=1536%2C878&quality=50&strip=all"
 description: "Upscale AI is reportedly in talks to raise $180M–$200M at a $2B valuation, highlighting rapid growth trends in AI infrastructure startups."

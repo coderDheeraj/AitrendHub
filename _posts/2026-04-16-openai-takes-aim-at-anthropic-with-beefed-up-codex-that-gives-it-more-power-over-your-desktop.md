@@ -2,7 +2,7 @@
 layout: post
 title: "OpenAI Upgrades Codex with Agentic Features to Compete with Anthropic"
 date: 2026-04-16
-author: "AITrendHub Editorial"
+
 category: "Technology"
 image: "https://media.gettyimages.com/id/2218344211/photo/san-francisco-california-open-ai-ceo-sam-altman-speaks-during-snowflake-summit-2025-at.jpg?s=612x612&w=0&k=20&c=FFwF2Y4LkMIoSSQcnOsHAn_BwpoHtjnQ8Z0UqecHppk="
 description: "OpenAI enhances Codex with agentic capabilities, allowing it to operate across desktop applications and compete with Anthropic’s coding tools."
@@ -98,4 +98,4 @@ As the competition intensifies, users can expect faster innovation and more capa
 
 ---
 
-*Generated for AITrendHub Intel Core*
+

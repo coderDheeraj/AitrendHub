@@ -2,7 +2,7 @@
 layout: post
 title: "Top AI Tools to Earn Money Online in 2026"
 date: 2026-04-16
-author: "Marcus Sterling"
+
 category: "Finance"
 image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=800"
 description: "Discover practical ways to earn money online using AI tools in 2026 through freelancing, content creation, automation, and digital services."

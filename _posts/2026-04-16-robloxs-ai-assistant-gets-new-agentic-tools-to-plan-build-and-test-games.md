@@ -2,7 +2,7 @@
 layout: post
 title: "Roblox Introduces Agentic AI Tools to Plan, Build, and Test Games"
 date: 2026-04-16
-author: "AITrendHub Editorial"
+
 category: "Technology"
 image: "https://imgs.search.brave.com/XUpSwmPgbjTSdvfOZXFIhzybEzWTmnYCHNvrLmWWHYM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YWxwaHIuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIzLzA5/L0Jsb3gtRnJ1aXRz/LUhvdy10by1HZXQt/Q0RLLTMwMngxOTAu/anBn"
 description: "Roblox upgrades its AI Assistant with agentic tools, enabling developers to plan, build, and test games more efficiently using intelligent workflows."

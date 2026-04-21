@@ -2,7 +2,7 @@
 layout: post
 title: "AI Traffic to U.S. Retailers Surges 393% in Q1, Driving Higher Revenue"
 date: 2026-04-16
-author: "AITrendHub Editorial"
+
 category: "Technology"
 image: "https://t3.ftcdn.net/jpg/18/28/22/52/240_F_1828225279_2vZKeHYYQOSonkfQMF0oCPnknGkRUWy6.jpg"
 description: "AI-driven traffic to U.S. retail websites rises sharply, boosting engagement, conversions, and revenue according to new Adobe data."

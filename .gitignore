@@ -5,3 +5,9 @@ dist
 .vscode
 .gemini
 package-lock.json
+
+# Jekyll
+_site/
+.jekyll-cache/
+.sass-cache/
+.jekyll-metadata

@@ -2,7 +2,7 @@
 layout: post
 title: "The Best AI Tools for Coding: Boosting Developer Productivity in 2026"
 date: 2026-04-15
-author: "Alex Dev"
+
 category: "Technology"
 image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800"
 description: "Explore the best AI coding tools in 2026, from intelligent code editors to autonomous agents that help developers build faster and smarter."

@@ -2,7 +2,7 @@
 layout: post
 title: "Physical Intelligence Unveils Robot Brain That Learns Tasks Without Training"
 date: 2026-04-16
-author: "AITrendHub Editorial"
+
 category: "Technology"
 image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800"
 description: "Robotics startup Physical Intelligence introduces π0.7, a new AI model capable of performing tasks it was never explicitly trained on."
@@ -101,4 +101,4 @@ As AI continues to evolve, breakthroughs like π0.7 could play a critical role i
 
 ---
 
-*Generated for AITrendHub Intel Core*
+

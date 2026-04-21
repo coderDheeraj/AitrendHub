@@ -2,7 +2,7 @@
 layout: post
 title: "ChatGPT vs Gemini vs Claude: The Ultimate AI Comparison in 2026"
 date: 2026-04-14
-author: "Emily Carter"
+
 category: "Analysis"
 image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800"
 description: "Compare ChatGPT, Gemini, and Claude in 2026 across reasoning, coding, multimodal capabilities, and real-world use cases."

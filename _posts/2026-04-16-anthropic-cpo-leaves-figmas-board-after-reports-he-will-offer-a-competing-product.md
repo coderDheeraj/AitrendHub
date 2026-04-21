@@ -2,7 +2,7 @@
 layout: post
 title: "Anthropic CPO Mike Krieger Steps Down from Figma Board Amid Competition Concerns"
 date: 2026-04-16
-author: "AITrendHub Editorial"
+
 category: "Technology"
 image: "https://img-api.mac4ever.com/800/0/03f029479f_claude-design-anthropic-lance-un-outil-ia-pour-creer-des-interfaces-directement-depuis-le-code.webp"
 description: "Anthropic’s Chief Product Officer Mike Krieger resigns from Figma’s board as reports suggest upcoming AI design tools that could compete with Figma."
@@ -90,4 +90,4 @@ The coming months will be crucial in determining how these dynamics reshape the 
 
 ---
 
-*Generated for AITrendHub Intel Core*
+

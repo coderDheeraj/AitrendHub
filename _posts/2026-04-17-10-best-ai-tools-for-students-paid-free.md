@@ -2,7 +2,7 @@
 layout: post
 title: "10 Best AI Tools for Students (Free & Paid) in 2026"
 date: 2026-04-17
-author: "Dr. Sarah Chen"
+
 category: "Education"
 image: "https://imgs.search.brave.com/HcXq4fbaZd2pcfxGJiMiBcszsXP3NfWwYyHdh9XqiYc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YWxpZ25taW5kcy5j/b20vd3AtY29udGVu/dC91cGxvYWRzLzIw/MjUvMDgvQWxpZ25t/aW5kcy1CbG9nLUFJ/LVQtMy5wbmc"
 description: "Discover the top 10 AI tools for students in 2026. Boost productivity, improve writing, and simplify research with these powerful tools."

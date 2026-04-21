@@ -2,7 +2,7 @@
 layout: post
 title: "Google Introduces Side-by-Side Web Browsing with AI Mode"
 date: 2026-04-16
-author: "AITrendHub Editorial"
+
 category: "Technology"
 image: "https://i.gadgets360cdn.com/large/google_ai_mode_1776405283676.jpg?downsize=950:*"
 description: "Google rolls out a new AI Mode feature that allows users to browse websites side-by-side with AI-powered search for a more interactive experience."

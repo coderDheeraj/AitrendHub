@@ -1,0 +1,64 @@
+<section class="newsletter-section">
+    <div class="container newsletter-content">
+        <div class="newsletter-text">
+            <h2>Stay Ahead of the Curve</h2>
+            <p>Join 50,000+ technologists receiving our weekly deep dive into the future of AI.</p>
+        </div>
+        <form id="newsletterForm" class="newsletter-form">
+            <div class="input-group">
+                <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+                <button type="submit" id="newsletterSubmit">Subscribe</button>
+            </div>
+            <p id="newsletterMessage" class="newsletter-message hidden"></p>
+        </form>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="{{ '/' | relative_url }}" class="logo" style="text-decoration: none;">
+                    <span class="logo-icon">
+                        <svg width="32" height="32" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="21" cy="21" r="18" stroke="url(#neuralGrad)" stroke-width="0.5" stroke-dasharray="4 4" opacity="0.3"/>
+                            <circle cx="21" cy="21" r="14" stroke="url(#neuralGrad)" stroke-width="1" opacity="0.5"/>
+                            <path d="M21 7V14" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M21 28V35" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M7 21H14" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M28 21H35" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="21" cy="21" r="5" fill="url(#neuralGrad)"/>
+                        </svg>
+                    </span>
+                    <span class="logo-text">Trend<span class="accent-text">-AI</span></span>
+                </a>
+                <p class="brand-description">Intelligence Optimized. Your daily destination for high-signal insights into Artificial Intelligence, Robotics, and the Future of the digital economy.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <ul id="footerCategories">
+                    <li><a href="{{ '/' | relative_url }}">Latest Insights</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="{{ '/about/' | relative_url }}">About Us</a></li>
+                    <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+                    <li><a href="{{ '/privacy-policy/' | relative_url }}">Privacy Policy</a></li>
+                    <li><a href="{{ '/disclaimer/' | relative_url }}">Disclaimer</a></li>
+                    <li><a href="{{ '/terms-conditions/' | relative_url }}">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:trendyaidev@gmail.com">trendyaidev@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Trend-AI. Powered by Intelligence. All rights reserved.</p>
+            <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to Top">Back to Top ↑</button>
+        </div>
+    </div>
+</footer>

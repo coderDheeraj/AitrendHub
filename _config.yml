@@ -1,0 +1,51 @@
+title: Trend-AI
+tagline: Intelligence Optimized
+description: Trend-AI delivers the latest breakthroughs in Artificial Intelligence, Robotics, and Future Tech.
+author: Trend-AI Editorial
+url: https://trend-ai.dev/
+theme_color: "#030712"
+logo: /assets/images/logo.png
+permalink: /:categories/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+gems:
+  - jekyll-paginate
+
+paginate: 9
+paginate_path: "/page:num/"
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - README.md
+  - LICENSE
+  - .idea/
+  - tmp/
+  - scratch/

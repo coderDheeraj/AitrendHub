@@ -2,7 +2,7 @@
 layout: post
 title: "How to Create Stunning AI Images for Free (Step-by-Step Guide)"
 date: 2026-04-13
-author: "Leo DaVinci"
+
 category: "Creative"
 image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&q=80&w=800"
 description: "Learn how to generate high-quality AI images for free using top platforms and simple prompt techniques."

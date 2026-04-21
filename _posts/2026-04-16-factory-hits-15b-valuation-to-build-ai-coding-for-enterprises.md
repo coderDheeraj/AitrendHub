@@ -2,7 +2,7 @@
 layout: post
 title: "Factory Reaches $1.5 Billion Valuation to Build AI Coding Tools for Enterprises"
 date: 2026-04-16
-author: "AITrendHub Editorial"
+
 category: "Technology"
 image: "https://media.gettyimages.com/id/1488105257/photo/chatbot-powered-by-ai-transforming-industries-and-customer-service-yellow-chatbot-icon-over.jpg?s=612x612&w=0&k=20&c=DqZnxzJ0EKZRqe8yu903T1tK-wNBgksSKmITiIL1eqk="
 description: "AI coding startup Factory raises $150M at a $1.5B valuation, aiming to build flexible AI agents for enterprise engineering teams."

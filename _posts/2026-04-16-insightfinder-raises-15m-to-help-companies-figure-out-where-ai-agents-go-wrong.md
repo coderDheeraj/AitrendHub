@@ -2,7 +2,7 @@
 layout: post
 title: "InsightFinder Raises $15M to Tackle AI Agent Reliability Challenges"
 date: 2026-04-16
-author: "AITrendHub Editorial"
+
 category: "Technology"
 image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800"
 description: "InsightFinder secures $15M funding to help enterprises monitor, diagnose, and fix issues in AI-driven systems and autonomous agents."

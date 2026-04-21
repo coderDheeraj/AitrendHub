@@ -1,0 +1,56 @@
+<header class="navbar">
+    <div class="container header-content">
+        <a href="{{ '/' | relative_url }}" class="logo" style="text-decoration: none;">
+            <span class="logo-icon">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="neuralGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#818cf8" />
+                            <stop offset="100%" stop-color="#c084fc" />
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <circle cx="21" cy="21" r="18" stroke="url(#neuralGrad)" stroke-width="0.5" stroke-dasharray="4 4" opacity="0.3"/>
+                    <circle cx="21" cy="21" r="14" stroke="url(#neuralGrad)" stroke-width="1" opacity="0.5"/>
+                    <path d="M21 7V14" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
+                    <path d="M21 28V35" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
+                    <path d="M7 21H14" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
+                    <path d="M28 21H35" stroke="url(#neuralGrad)" stroke-width="2" stroke-linecap="round" filter="url(#glow)"/>
+                    <circle cx="21" cy="21" r="5" fill="url(#neuralGrad)" filter="url(#glow)">
+                        <animate attributeName="r" values="4.5;5.5;4.5" dur="3s" repeatCount="indefinite" />
+                    </circle>
+                    <circle cx="21" cy="7" r="2" fill="#818cf8" />
+                    <circle cx="21" cy="35" r="2" fill="#c084fc" />
+                    <circle cx="7" cy="21" r="2" fill="#818cf8" />
+                    <circle cx="35" cy="21" r="2" fill="#c084fc" />
+                </svg>
+            </span>
+            <span class="logo-text">Trend<span class="accent-text">-AI</span></span>
+        </a>
+        <nav class="nav-links">
+            <a href="{{ '/' | relative_url }}">Home</a>
+            <a href="{{ '/about/' | relative_url }}">About</a>
+            <a href="{{ '/contact/' | relative_url }}">Contact</a>
+        </nav>
+        <div class="nav-right">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <div id="searchResults" class="search-results hidden" style="position: absolute; top: 100%; left: 0; width: 100%; max-height: 400px; overflow-y: auto; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; margin-top: 5px; z-index: 100; font-size: 0.9rem;"></div>
+            </div>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle Theme">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </div>
+</header>

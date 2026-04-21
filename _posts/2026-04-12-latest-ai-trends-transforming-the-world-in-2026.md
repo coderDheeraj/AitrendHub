@@ -2,7 +2,7 @@
 layout: post
 title: "Latest AI Trends Transforming the World in 2026"
 date: 2026-04-12
-author: "AITrendHub Editorial"
+
 category: "Innovation"
 image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800"
 description: "Explore the biggest AI trends of 2026, including agentic AI, multimodal systems, robotics, and the rise of small language models."

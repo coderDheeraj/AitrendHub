@@ -2,7 +2,7 @@
 layout: post
 title: "Luma Launches AI-Powered Production Studio with Wonder Project"
 date: 2026-04-16
-author: "AITrendHub Editorial"
+
 category: "Technology"
 image: "https://imgs.search.brave.com/dlnftn5M86DQpoxTZUs1IVLSBI0bOqUs95yo5xSxbB4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/bW9iaWxpdHlpbmRp/YS5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMjYvMDMvTHVt/YS1MYXVuY2hlcy1M/dW1hLUFnZW50cy1Q/b3dlcmVkLUJ5LVVu/aWZpZWQtSW50ZWxs/aWdlbmNlLUZvci1D/cmVhdGl2ZS1Xb3Jr/LmpwZw"
 description: "AI startup Luma launches Innovative Dreams, a production studio built with Wonder Project to create AI-assisted films and series."
