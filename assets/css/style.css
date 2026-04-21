@@ -1151,4 +1151,114 @@ main.container {
 
 .sib-hide-loader-icon {
     display: none !important;
-}
+}
+
+/* PWA Install Banner */
+.install-banner {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(120%);
+    width: 90%;
+    max-width: 500px;
+    background: rgba(17, 24, 39, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.install-banner.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+.install-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.install-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+.install-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.install-text h4 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: white;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.install-text p {
+    margin: 2px 0 0;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.install-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-install {
+    background: linear-gradient(135deg, #818cf8, #c084fc);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(129, 140, 248, 0.3);
+}
+
+.btn-install:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(129, 140, 248, 0.4);
+}
+
+.btn-close-banner {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+}
+
+.btn-close-banner:hover {
+    color: white;
+}
+
+@media (max-width: 480px) {
+    .install-banner {
+        bottom: 16px;
+        padding: 12px 16px;
+    }
+    
+    .install-text p {
+        display: none;
+    }
+}
+

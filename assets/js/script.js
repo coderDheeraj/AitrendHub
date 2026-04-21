@@ -162,3 +162,59 @@ window.filterCategory = async function(category) {
         grid.innerHTML = '<div style="grid-column: 1 / -1; padding: 40px; text-align: center; color: var(--text-secondary);">Error loading categories.</div>';
     }
 };
+
+/**
+ * PWA Install Logic
+ */
+(function() {
+    let deferredPrompt;
+    const banner = document.getElementById('pwa-install-banner');
+    const installBtn = document.getElementById('btn-install-pwa');
+    const closeBtn = document.getElementById('btn-close-pwa');
+
+    if (!banner || !installBtn || !closeBtn) return;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e;
+        // Update UI notify the user they can install the PWA
+        banner.classList.add('show');
+        
+        console.log('beforeinstallprompt fired');
+    });
+
+    installBtn.addEventListener('click', async () => {
+        if (!deferredPrompt) return;
+        // Show the install prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User response to the install prompt: ${outcome}`);
+        // We've used the prompt, and can't use it again, throw it away
+        deferredPrompt = null;
+        // Hide the banner
+        banner.classList.remove('show');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        banner.classList.remove('show');
+        // Optionally save to localStorage to not show again for some time
+        localStorage.setItem('pwa-banner-dismissed', Date.now());
+    });
+
+    window.addEventListener('appinstalled', (event) => {
+        console.log('App installed successfully');
+        banner.classList.remove('show');
+    });
+    
+    // Check if it was recently dismissed
+    const dismissedAt = localStorage.getItem('pwa-banner-dismissed');
+    const now = Date.now();
+    const oneDay = 24 * 60 * 60 * 1000;
+    
+    // Auto-show logic if prompt was already captured (browser quirk)
+    // Most browsers only fire beforeinstallprompt once, so we rely on the event.
+})();
+
