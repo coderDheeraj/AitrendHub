@@ -1,0 +1,117 @@
+---
+layout: default
+---
+
+<div class="" style="padding-top: 20px; max-width: 1000px; margin: 0 auto;">
+    <div class="post-header" style="text-align: center; margin-bottom: 60px;">
+        <h1 class="post-title-main" style="margin-top: 20px; font-size: 3.5rem;">{{ page.title }}</h1>
+        <p style="color: var(--text-secondary); font-size: 1.25rem; max-width: 600px; margin: 0 auto; line-height: 1.8;">{{ page.description }}</p>
+    </div>
+    
+    {% if content contains '<' %}
+    <div id="postBody" class="post-body md-content" style="margin-bottom: 40px; text-align: center;">
+        {{ content }}
+    </div>
+    {% endif %}
+
+    <div class="tools-grid">
+        {% for tool in site.data.ai_tools %}
+        <a href="{{ tool.url }}" target="_blank" rel="noopener noreferrer" class="tool-card" style="text-decoration: none; color: inherit;">
+            <div class="tool-image-container" style="background: {{ tool.gradient | default: 'var(--card-border)' }};">
+                <span class="tool-category-badge">{{ tool.category }}</span>
+                {% if tool.image %}
+                <img src="{{ tool.image | relative_url }}" alt="{{ tool.name }}" class="tool-cover-image">
+                {% else %}
+                <div class="tool-icon-placeholder">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                {% endif %}
+            </div>
+            <div class="tool-card-content">
+                <h3 class="tool-title">{{ tool.name }}</h3>
+                <p class="tool-desc">{{ tool.description }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+.tool-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s, border-color 0.4s;
+    display: flex;
+    flex-direction: column;
+}
+.tool-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px -15px rgba(0,0,0,0.4);
+    border-color: var(--accent);
+}
+.tool-image-container {
+    height: 180px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tool-cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+.tool-card:hover .tool-cover-image {
+    transform: scale(1.05);
+}
+.tool-category-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(12px);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 6px 16px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.tool-icon-placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    opacity: 0.8;
+}
+.tool-card-content {
+    padding: 30px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.tool-title {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-primary);
+}
+.tool-desc {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0;
+}
+</style>

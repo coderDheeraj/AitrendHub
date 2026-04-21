@@ -1,0 +1,50 @@
+[
+  {
+    "name": "ChatGPT",
+    "description": "An advanced conversational AI model by OpenAI that excels at answering questions and generating text.",
+    "category": "Chatbot",
+    "url": "https://chatgpt.com",
+    "image": "/assets/images/chatgpt.png",
+    "gradient": "linear-gradient(135deg, #10b981, #047857)"
+  },
+  {
+    "name": "Claude 3",
+    "description": "Anthropic's safest and most capable AI assistant, processing massive context windows with high accuracy.",
+    "category": "Chatbot",
+    "url": "https://claude.ai",
+    "image": "/assets/images/claude.png",
+    "gradient": "linear-gradient(135deg, #f59e0b, #b45309)"
+  },
+  {
+    "name": "Midjourney",
+    "description": "State-of-the-art AI image generation model creating highly detailed and artistic visuals from text prompts.",
+    "category": "Image Generation",
+    "url": "https://midjourney.com",
+    "image": "/assets/images/midjourney.png",
+    "gradient": "linear-gradient(135deg, #3b82f6, #1d4ed8)"
+  },
+  {
+    "name": "GitHub Copilot",
+    "description": "Your AI pair programmer that suggests code and entire functions in real-time right from your editor.",
+    "category": "Coding",
+    "url": "https://github.com/features/copilot",
+    "image": "/assets/images/copilot.png",
+    "gradient": "linear-gradient(135deg, #6366f1, #4338ca)"
+  },
+  {
+    "name": "Perplexity",
+    "description": "An AI-powered search engine that provides direct, cited answers rather than a list of links.",
+    "category": "Research",
+    "url": "https://perplexity.ai",
+    "image": "/assets/images/perplexity.png",
+    "gradient": "linear-gradient(135deg, #8b5cf6, #6d28d9)"
+  },
+  {
+    "name": "Sora",
+    "description": "OpenAI's groundbreaking video generation model capable of creating realistic 60-second video clips.",
+    "category": "Video",
+    "url": "https://openai.com/sora",
+    "image": "/assets/images/sora.png",
+    "gradient": "linear-gradient(135deg, #ef4444, #b91c1c)"
+  }
+]

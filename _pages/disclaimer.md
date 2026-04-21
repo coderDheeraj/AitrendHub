@@ -22,4 +22,4 @@ While we have made every attempt to ensure that the information contained in thi
 The Site may contain views and opinions which are those of the authors and do not necessarily reflect the official policy or position of any other author, agency, organization, employer, or company, including Trend-AI.
 
 ## 5. Contact Us
-If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email at [trendyaidev@gmail.com](mailto:trendyaidev@gmail.com).
+If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email at [contact@trend-ai.dev](mailto:contact@trend-ai.dev).

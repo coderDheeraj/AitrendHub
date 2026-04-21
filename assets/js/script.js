@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     setupTheme();
     setupMobileMenu();
-    setupNewsletter();
     initLightbox();
     setupSearch();
 });
+
 
 function setupTheme() {
     const toggle = document.getElementById('themeToggle');
@@ -31,37 +31,7 @@ function setupMobileMenu() {
     }
 }
 
-function setupNewsletter() {
-    const form = document.getElementById('newsletterForm');
-    if (!form) return;
-    form.onsubmit = async (e) => {
-        e.preventDefault();
-        const msg = document.getElementById('newsletterMessage');
-        const btn = document.getElementById('newsletterSubmit');
-        const originalText = btn.textContent;
 
-        btn.disabled = true;
-        btn.textContent = 'Joining...';
-        msg.classList.remove('hidden');
-
-        try {
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            msg.textContent = 'Welcome! You are on the list.';
-            msg.className = 'newsletter-message success';
-            btn.textContent = 'Success!';
-            localStorage.setItem('isSubscribed', 'true');
-            setTimeout(() => {
-                document.getElementById('newsletterEmail').disabled = true;
-                btn.textContent = 'Subscribed';
-            }, 2000);
-        } catch (error) {
-            msg.textContent = 'Error. Please try again.';
-            msg.className = 'newsletter-message error';
-            btn.disabled = false;
-            btn.textContent = originalText;
-        }
-    };
-}
 
 function initLightbox() {
     const images = document.querySelectorAll('.post-body img, .post-hero-img');

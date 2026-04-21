@@ -777,24 +777,80 @@ main.container {
     gap: 10px;
 }
 
-.input-group input {
+.newsletter-form .input-group {
+    position: relative;
+}
+
+.newsletter-form input[type="email"] {
     flex: 1;
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     color: var(--text-primary);
-    padding: 12px 20px;
-    border-radius: 10px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+    width: 100%;
 }
 
-.input-group button {
+.newsletter-form input[type="email"]:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.newsletter-form button {
     background: var(--accent);
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 10px;
+    padding: 0 24px;
+    border-radius: 12px;
     font-weight: 700;
     cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
 }
+
+.newsletter-form button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* Brevo Message Panels */
+.sib-form-message-panel {
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 20px;
+    font-weight: 500;
+    text-align: left;
+}
+
+#error-message {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+#success-message {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+    animation: fadeIn 0.5s ease;
+    text-align: center;
+}
+
+#success-message .sib-form-message-panel__inner-text {
+    font-size: 1.1rem !important;
+    font-weight: 600;
+}
+
+
+
+.input--hidden {
+    display: none !important;
+}
+
 
 /* Footer */
 /* Footer */
@@ -1087,3 +1143,12 @@ main.container {
 .feed-content .section-title {
     margin-top: 20px;
 }
+
+/* Hide form on success to prevent stuck loader */
+.sib-form-message-panel#success-message:not([style*="none"]) ~ #sib-container {
+    display: none !important;
+}
+
+.sib-hide-loader-icon {
+    display: none !important;
+}

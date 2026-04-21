@@ -1,0 +1,23 @@
+{
+  "name": "blogger",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderDheeraj/AitrendHub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coderDheeraj/AitrendHub/issues"
+  },
+  "homepage": "https://github.com/coderDheeraj/AitrendHub#readme",
+  "description": "",
+  "devDependencies": {
+    "workbox-cli": "^7.4.0"
+  }
+}
