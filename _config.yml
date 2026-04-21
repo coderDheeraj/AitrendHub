@@ -12,6 +12,11 @@ plugins:
   - jekyll-seo-tag
   - jekyll-paginate
 
+collections:
+  pages:
+    output: true
+    permalink: /:title/
+
 gems:
   - jekyll-paginate
 
