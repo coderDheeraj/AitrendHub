@@ -1,0 +1,21 @@
+{
+  "name": "Trend-AI",
+  "short_name": "Trend-AI",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#030712",
+  "description": "Trend-AI delivers the latest breakthroughs in Artificial Intelligence, Robotics, and Future Tech.",
+  "icons": [
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
