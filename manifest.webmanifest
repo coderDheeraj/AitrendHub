@@ -8,14 +8,16 @@
   "description": "Trend-AI delivers the latest breakthroughs in Artificial Intelligence, Robotics, and Future Tech.",
   "icons": [
     {
-      "src": "/assets/images/logo.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "/assets/images/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     },
     {
-      "src": "/assets/images/logo.png",
+      "src": "/assets/images/logo.svg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ]
 }
