@@ -4,7 +4,7 @@ description: Trend-AI delivers the latest breakthroughs in Artificial Intelligen
 author: Trend-AI Editorial
 url: https://trend-ai.dev
 theme_color: "#030712"
-logo: /assets/images/logo.png
+logo: /assets/images/logo.svg
 permalink: /:categories/:title/
 
 plugins:

@@ -188,34 +188,30 @@ window.filterCategory = async function(category) {
         // Stash the event so it can be triggered later.
         deferredPrompt = e;
         
-        // Show the banner only if we haven't shown it in this session yet
-        // or based on the persistent flag (redundant check for safety)
+        // Show the banner only if we haven't shown it to this user yet
         if (!localStorage.getItem('pwa-install-prompted')) {
             banner.classList.add('show');
-            // Set flag immediately so it doesn't show on next page change
+            // Set flag immediately so it doesn't reappear on page navigation
             localStorage.setItem('pwa-install-prompted', 'true');
         }
     });
 
     installBtn.addEventListener('click', async () => {
         if (!deferredPrompt) return;
-        // Show the install prompt
         deferredPrompt.prompt();
-        // Wait for the user to respond to the prompt
         const { outcome } = await deferredPrompt.userChoice;
-        console.log(`User response to the install prompt: ${outcome}`);
-        // We've used the prompt, and can't use it again, throw it away
         deferredPrompt = null;
-        // Hide the banner
         banner.classList.remove('show');
+        localStorage.setItem('pwa-install-prompted', 'true');
     });
 
     closeBtn.addEventListener('click', () => {
         banner.classList.remove('show');
+        // Explicitly set the flag when the user dismisses the banner
+        localStorage.setItem('pwa-install-prompted', 'true');
     });
 
     window.addEventListener('appinstalled', (event) => {
-        console.log('App installed successfully');
         banner.classList.remove('show');
         localStorage.setItem('pwa-install-prompted', 'true');
     });
