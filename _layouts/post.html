@@ -69,4 +69,35 @@ layout: default
             {% endfor %}
         </div>
     </section>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ page.url | absolute_url }}"
+      },
+      "headline": "{{ page.title | escape }}",
+      "image": [
+        "{{ page.image | absolute_url }}"
+      ],
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.date | date_to_xmlschema }}",
+      "author": {
+        "@type": "Organization",
+        "name": "{{ site.author | default: 'Trend-AI Editorial' }}",
+        "url": "{{ site.url }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ site.title }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ site.logo | absolute_url }}"
+        }
+      },
+      "description": "{{ page.description | default: page.excerpt | strip_html | normalize_whitespace | truncate: 160 | escape }}"
+    }
+    </script>
 </article>

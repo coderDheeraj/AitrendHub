@@ -174,15 +174,27 @@ window.filterCategory = async function(category) {
 
     if (!banner || !installBtn || !closeBtn) return;
 
+    // Check if the user has already been prompted or has installed the app
+    const hasBeenPrompted = localStorage.getItem('pwa-install-prompted');
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+    if (hasBeenPrompted || isStandalone) {
+        return;
+    }
+
     window.addEventListener('beforeinstallprompt', (e) => {
         // Prevent the mini-infobar from appearing on mobile
         e.preventDefault();
         // Stash the event so it can be triggered later.
         deferredPrompt = e;
-        // Update UI notify the user they can install the PWA
-        banner.classList.add('show');
         
-        console.log('beforeinstallprompt fired');
+        // Show the banner only if we haven't shown it in this session yet
+        // or based on the persistent flag (redundant check for safety)
+        if (!localStorage.getItem('pwa-install-prompted')) {
+            banner.classList.add('show');
+            // Set flag immediately so it doesn't show on next page change
+            localStorage.setItem('pwa-install-prompted', 'true');
+        }
     });
 
     installBtn.addEventListener('click', async () => {
@@ -200,21 +212,12 @@ window.filterCategory = async function(category) {
 
     closeBtn.addEventListener('click', () => {
         banner.classList.remove('show');
-        // Optionally save to localStorage to not show again for some time
-        localStorage.setItem('pwa-banner-dismissed', Date.now());
     });
 
     window.addEventListener('appinstalled', (event) => {
         console.log('App installed successfully');
         banner.classList.remove('show');
+        localStorage.setItem('pwa-install-prompted', 'true');
     });
-    
-    // Check if it was recently dismissed
-    const dismissedAt = localStorage.getItem('pwa-banner-dismissed');
-    const now = Date.now();
-    const oneDay = 24 * 60 * 60 * 1000;
-    
-    // Auto-show logic if prompt was already captured (browser quirk)
-    // Most browsers only fire beforeinstallprompt once, so we rely on the event.
 })();
 
