@@ -55,16 +55,7 @@ async function setupSearch() {
     
     if (!searchInput || !searchResults) return;
 
-    try {
-        const response = await fetch(window.searchDataUrl || '/search.json');
-        if (response.ok) {
-            searchData = await response.json();
-        }
-    } catch (e) {
-        console.error("Failed to load search index", e);
-    }
-
-    searchInput.addEventListener('input', (e) => {
+    searchInput.addEventListener('input', async (e) => {
         const query = e.target.value.toLowerCase();
         searchResults.innerHTML = '';
         
@@ -73,18 +64,24 @@ async function setupSearch() {
             return;
         }
 
-        const results = searchData.filter(post => 
-            post.title.toLowerCase().includes(query) || 
-            post.desc.toLowerCase().includes(query) ||
-            post.category.toLowerCase().includes(query)
-        ).slice(0, 5);
+        // Search Supabase
+        const { data: results, error } = await window.sb
+            .from('posts')
+            .select('title, slug, category, date, description')
+            .or(`title.ilike.%${query}%,description.ilike.%${query}%,category.ilike.%${query}%`)
+            .limit(5);
 
-        if (results.length > 0) {
+        if (error) {
+            console.error("Search error:", error);
+            return;
+        }
+
+        if (results && results.length > 0) {
             searchResults.classList.remove('hidden');
             searchResults.innerHTML = results.map(post => `
-                <a href="${post.url}" class="search-result-item" style="display: block; padding: 10px; border-bottom: 1px solid var(--card-border); text-decoration: none; color: inherit; transition: background 0.2s;">
+                <a href="/post.html?s=${post.slug}" class="search-result-item" style="display: block; padding: 10px; border-bottom: 1px solid var(--card-border); text-decoration: none; color: inherit; transition: background 0.2s;">
                     <strong style="display: block; color: var(--text-primary); margin-bottom: 4px;">${post.title}</strong>
-                    <span style="font-size: 0.8rem; color: var(--text-secondary);">${post.category} • ${post.date}</span>
+                    <span style="font-size: 0.8rem; color: var(--text-secondary);">${post.category || 'General'} • ${new Date(post.date).toLocaleDateString()}</span>
                 </a>
             `).join('');
         } else {
@@ -111,57 +108,6 @@ const scrollHandler = () => {
     if (container) container.style.opacity = winScroll > 100 ? 1 : 0;
 };
 window.addEventListener('scroll', scrollHandler);
-
-window.filterCategory = async function(category) {
-    const btns = document.querySelectorAll('.cat-btn');
-    btns.forEach(b => b.classList.remove('active'));
-    event.currentTarget.classList.add('active');
-
-    if (category === 'All Feed') {
-        window.location.href = "{{ '/' | relative_url }}".replace("{{ '/' | relative_url }}", "/");
-        return;
-    }
-
-    const grid = document.getElementById('postsGrid');
-    const featured = document.getElementById('featuredPost');
-    const pagination = document.getElementById('pagination');
-    if (!grid) return;
-
-    if (featured) featured.style.display = 'none';
-    if (pagination) pagination.style.display = 'none';
-    grid.innerHTML = '<div style="grid-column: 1 / -1; padding: 40px; text-align: center; color: var(--text-secondary);">Loading...</div>';
-
-    try {
-        if (searchData.length === 0) {
-            const response = await fetch(window.searchDataUrl || '/search.json');
-            if (response.ok) searchData = await response.json();
-        }
-
-        const filtered = searchData.filter(p => p.category === category);
-        
-        if (filtered.length === 0) {
-            grid.innerHTML = '<div style="grid-column: 1 / -1; padding: 40px; text-align: center; color: var(--text-secondary);">No insights found in this category.</div>';
-            return;
-        }
-
-        grid.innerHTML = filtered.map(post => `
-            <a href="${post.url}" class="post-card" style="text-decoration: none; color: inherit;">
-                <div class="post-card-image" style="background-image: url('${post.image}')"></div>
-                <div class="post-card-content">
-                    <span class="post-tag">${post.category}</span>
-                    <h3 class="post-title">${post.title}</h3>
-                    <p class="post-excerpt">${post.desc}</p>
-                    <div class="post-meta">
-                        <span>${post.date}</span>
-                    </div>
-                </div>
-            </a>
-        `).join('');
-
-    } catch (e) {
-        grid.innerHTML = '<div style="grid-column: 1 / -1; padding: 40px; text-align: center; color: var(--text-secondary);">Error loading categories.</div>';
-    }
-};
 
 /**
  * PWA Install Logic
