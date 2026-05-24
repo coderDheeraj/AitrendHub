@@ -1,6 +1,8 @@
 # AITrendHub
 
-AITrendHub is a modern web platform focused on showcasing trending AI tools, technologies, and innovations. The project provides users with an organized and visually clean interface to explore updates related to Artificial Intelligence, Machine Learning, and emerging technologies.
+AITrendHub is a modern AI news and tools discovery platform built to showcase trending developments in Artificial Intelligence, Machine Learning, and emerging technologies. The platform delivers a clean and responsive reading experience with curated AI articles, trending tools, and technology updates.
+
+Live Website: https://trend-ai.dev
 
 ---
 
@@ -12,12 +14,14 @@ AITrendHub is a modern web platform focused on showcasing trending AI tools, tec
 
 ## Features
 
-- Responsive user interface
-- Modern and minimal design
-- AI and technology focused platform
-- Fast and lightweight frontend
-- Mobile-friendly layout
-- Trending AI news and tools section
+- Modern and responsive UI
+- AI news and trending updates
+- AI tools showcase section
+- Category-based content filtering
+- Search functionality
+- Minimal and clean design
+- Optimized for desktop and mobile devices
+- Fast frontend performance
 
 ---
 
@@ -26,7 +30,17 @@ AITrendHub is a modern web platform focused on showcasing trending AI tools, tec
 - HTML5
 - CSS3
 - JavaScript
-- Git and GitHub
+
+---
+
+## Website Sections
+
+- Home
+- About
+- AI Tools
+- Contact
+- Trending News Feed
+- Search System
 
 ---
 
@@ -56,30 +70,30 @@ Clone the repository:
 git clone https://github.com/coderDheeraj/AitrendHub.git
 ```
 
-Open the project folder:
+Open the project directory:
 
 ```bash
 cd AitrendHub
 ```
 
-Then open `index.html` in your browser.
+Run the project locally by opening `index.html` in your browser.
 
 ---
 
-## Future Enhancements
+## Future Improvements
 
-- AI tool search functionality
 - Backend integration
-- User authentication
-- API integration for AI news and trends
-- Dark mode support
-- Bookmark and save features
+- User authentication system
+- AI news API integration
+- Bookmark functionality
+- Dark and light theme support
+- Admin dashboard for content management
 
 ---
 
 ## Contributing
 
-Contributions are welcome. Fork the repository and submit a pull request for improvements or new features.
+Contributions are welcome. Feel free to fork the repository and submit pull requests for improvements or new features.
 
 ---
 
@@ -93,4 +107,5 @@ This project is licensed under the MIT License.
 
 Dheeraj Jangid
 
-GitHub: https://github.com/coderDheeraj
+GitHub: https://github.com/coderDheeraj  
+Website: https://trend-ai.dev
