@@ -6,7 +6,7 @@ AITrendHub is a modern web platform focused on showcasing trending AI tools, tec
 
 ## Preview
 
-![AITrendHub Preview](./assets/images/preview.png)
+![AITrendHub Preview](./preview.png)
 
 ---
 
